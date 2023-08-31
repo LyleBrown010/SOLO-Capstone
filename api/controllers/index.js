@@ -37,6 +37,33 @@ routes.delete('/user/:id', (req, res) => {
 }); 
 
 // Product Routes
+routes.get('/products', (req, res) => {
+    products.fetchProducts(req, res)
+});
+
+routes.get('/product/:id', (req, res) => {
+    products.fetchProduct(req, res)
+});
+
+routes.post('/product', 
+bodyParser.json(), (req, res) => {
+    products.addProduct(req, res)
+});
+
+routes.put('/product/:id', 
+bodyParser.json(), (req, res) => {
+    products.updateProduct(req, res)
+});
+
+routes.patch('/product/:id', 
+bodyParser.json(), (req, res) => {
+    products.updateProduct(req, res)
+});
+
+routes.delete('/product/:id',
+bodyParser.json(), (req, res) => {
+    products.deleteProduct(req, res)
+});
 
 module.exports = {
     express, 
