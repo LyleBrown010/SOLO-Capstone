@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser'); 
 const routes = express.Router(); 
-const {users, products, orders} = require('../models')
+const {users, products, cart} = require('../models')
 
 // User Routes 
 routes.get('/users', (req, res) => {
@@ -65,7 +65,10 @@ bodyParser.json(), (req, res) => {
     products.deleteProduct(req, res)
 });
 
+// Cart routes
+
 module.exports = {
     express, 
-    routes
+    routes, 
+    cart
 }

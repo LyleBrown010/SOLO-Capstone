@@ -4,7 +4,9 @@ const {createToken} = require('../middleware/authenticateUser')
 
 class Users {
     fetchUsers(req, res){
-        const query = `SELECT userID, firstName, lastName, email, password, userRole, userProfile FROM Users;`
+        const query = `
+        SELECT userID, firstName, lastName, email, password, userRole, userProfile 
+        FROM Users;`
 
         db.query(query, (err, results) => {
             if(err) throw err
@@ -17,7 +19,10 @@ class Users {
     }
 
     fetchUser(req, res){
-        const query = `SELECT userID, firstName, lastName, email, password, userRole, userProfile FROM Users WHERE userID = ${req.params.id};`
+        const query = `
+        SELECT userID, firstName, lastName, email, password, userRole, userProfile 
+        FROM Users 
+        WHERE userID = ${req.params.id};`
 
         db.query(query, (err, result) => {
             if(err) throw err
@@ -42,7 +47,9 @@ class Users {
         };
 
         //query
-        const query = `INSERT INTO Users SET?;`;
+        const query = `
+        INSERT INTO Users 
+        SET?;`;
 
         db.query(query, [data], 
             (err) => {
@@ -66,7 +73,9 @@ class Users {
         const {email, password} = req.body;
 
         // query
-        const query = `SELECT firstName, lastName, email WHERE email = '${email}';`
+        const query = `
+        SELECT firstName, lastName, email 
+        WHERE email = '${email}';`
 
         db.query(query, async(err, result) => {
             if(err) throw err
@@ -115,7 +124,10 @@ class Users {
     }
 
     updateUser(req, res){
-        const query = `UPDATE Users SET? WHERE userID = ?`
+        const query = `
+        UPDATE Users 
+        SET? 
+        WHERE userID = ?`
 
         const data = req.body;
 
@@ -134,7 +146,9 @@ class Users {
     }
 
     deleteUser(req, res){
-        const query = `DELETE FROM Users WHERE userID = '${req.params.id};`
+        const query = `
+        DELETE FROM Users 
+        WHERE userID = '${req.params.id};`
 
         db.query(query, (err) => {
             if(err) throw err 

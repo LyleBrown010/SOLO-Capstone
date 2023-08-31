@@ -2,7 +2,7 @@ const db = require('../config')
 
 class Products{
     fetchProducts(req, res){
-        const query = `SELECT prodID, productName, productDescription, price, category, productUrl FROM Products;`;
+        const query = `SELECT prodID, productName, productDescription, productPrice, category, productUrl, artistName FROM Products;`;
 
         db.query(query, (err, results) => {
             if(err) throw err;
@@ -15,7 +15,7 @@ class Products{
     }
 
     fetchProduct(req, res){
-        const query = `SELECT prodID, productName, productDescription, price, category, productUrl FROM Products WHERE prodID = '${req.params.id}';`;
+        const query = `SELECT prodID, productName, productDescription, productPrice, category, productUrl, artistName FROM Products WHERE prodID = '${req.params.id}';`;
 
         db.query(query, (err, result) => {
             if(err) throw err;
@@ -28,7 +28,9 @@ class Products{
     }
 
     addProduct(req, res) {
-        const query = `INSERT INTO Products SET ?;`;
+        const query = `
+        INSERT INTO Products 
+        SET ?;`;
     
         db.query(query, req.body, (err) => {
           if (err) throw err;
@@ -41,7 +43,10 @@ class Products{
     }
 
     updateProduct(req, res) {
-        const query = `UPDATE Products SET ? WHERE prodID = ?;`;
+        const query = `
+        UPDATE Products 
+        SET ? 
+        WHERE prodID = ?;`;
     
         db.query(query, [req.body, req.params.id], (err) => {
           if (err) throw err;
@@ -54,7 +59,9 @@ class Products{
     }
 
     deleteProduct(req, res) {
-        const query = `DELETE FROM Products WHERE prodID = "${req.params.id}";`;
+        const query = `
+        DELETE FROM Products
+        WHERE prodID = "${req.params.id}";`;
     
         db.query(query, (err) => {
           if (err) throw err;
