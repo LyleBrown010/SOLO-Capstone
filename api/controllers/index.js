@@ -8,7 +8,7 @@ routes.get('/users', (req, res) => {
     users.fetchUsers(req, res)
 }); 
 
-routes.get('/user/:id', (res, res) => {
+routes.get('/user/:id', (req, res) => {
     users.fetchUser(req, res)
 });
 
@@ -66,6 +66,27 @@ bodyParser.json(), (req, res) => {
 });
 
 // Cart routes
+routes.get('/user/:id/carts', (req, res) => {
+    cart.fetchCart(req, res)
+});
+
+routes.post('/user/:id/cart', bodyParser.json(), (req, res) => {
+    cart.addToCart(req, res)
+})
+
+routes.put('/user/:id/cart/:id', bodyParser.json(), (req, res) => {
+    cart.updateCart(req, res)
+})
+
+routes.patch('/user/:id/cart/:id', bodyParser.json(), (req, res) => {
+    cart.updateCart(req, res)
+})
+
+routes.delete('/user/:id/cart', bodyParser.json(), (req, res) => {
+    cart.deleteCart(req, res)
+})
+
+
 
 module.exports = {
     express, 
