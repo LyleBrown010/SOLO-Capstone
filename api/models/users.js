@@ -74,8 +74,8 @@ class Users {
 
         // query
         const query = `
-        SELECT firstName, lastName, email 
-        WHERE email = '${email}';`
+        SELECT userID, firstName, lastName, email, password, userProfile
+        WHERE email = '${email}';`;
 
         db.query(query, async(err, result) => {
             if(err) throw err
@@ -90,7 +90,7 @@ class Users {
                 await compare(password, 
                     result[0].password,
                     (cErr, cResult) => {
-                        if(cErr) throw cErr
+                        if(cErr) throw cErr;
 
                         // create token
                         const token = createToken({
@@ -148,7 +148,7 @@ class Users {
     deleteUser(req, res){
         const query = `
         DELETE FROM Users 
-        WHERE userID = '${req.params.id};`
+        WHERE userID = '${req.params.id}';`
 
         db.query(query, (err) => {
             if(err) throw err 

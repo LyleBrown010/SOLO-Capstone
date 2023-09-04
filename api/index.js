@@ -38,5 +38,5 @@ app.use(errorHandling);
 
 // set server
 app.listen(port, () => {
-    console.log(`Puzzles Deli server is running on port ${port}`);
+    console.log(`SOLO server is running on port ${port}`);
 });
