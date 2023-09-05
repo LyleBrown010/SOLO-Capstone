@@ -78,7 +78,29 @@ export default createStore({
       catch(e){
         context.commit("setMessage", "An error occured in fetching a single user")
       }
-    }
+    },
+
+    async register(context, payload){
+      try{
+        const res = await axios.post(`${url}register`, payload);
+        const {message, err} = await res.data;
+        if(err){
+          context.commit("setMessage", "Something went wrong in the registration process");
+        }
+        if(message){
+          context.commit("setUser", message);
+        }
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred"); 
+      }
+    }, 
+
+    async login(context, payload){
+
+    },
+
+    
 
     //products
 
