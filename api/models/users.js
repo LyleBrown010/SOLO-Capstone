@@ -5,7 +5,7 @@ const {createToken} = require('../middleware/authenticateUser')
 class Users {
     fetchUsers(req, res){
         const query = `
-        SELECT userID, firstName, lastName, email, password, userRole, userProfile 
+        SELECT userID, firstName, lastName, email, userPassword, userRole, userProfile 
         FROM Users;`
 
         db.query(query, (err, results) => {
@@ -20,7 +20,7 @@ class Users {
 
     fetchUser(req, res){
         const query = `
-        SELECT userID, firstName, lastName, email, password, userRole, userProfile 
+        SELECT userID, firstName, lastName, email, userPassword, userRole, userProfile 
         FROM Users 
         WHERE userID = ${req.params.id};`
 
@@ -38,12 +38,12 @@ class Users {
         const data = req.body; 
 
         // password encryption
-        data.password = await hash(data.password, 20);
+        data.userPassword = await hash(data.userPassword, 20);
         
         // payload 
         const user = {
             email: data.email, 
-            password: data.password
+            userPassword: data.userPassword
         };
 
         //query
@@ -70,14 +70,15 @@ class Users {
     }
 
     login(req, res){
-        const {email, password} = req.body;
+        const {email, userPassword} = req.body;
 
         // query
         const query = `
-        SELECT userID, firstName, lastName, email, password, userProfile
+        SELECT firstName, lastName, email, userPassword, userProfile
+        FROM Users
         WHERE email = '${email}';`;
 
-        db.query(query, async(err, result) => {
+        db.query(query, [email], async(err, result) => {
             if(err) throw err
             
             if(!result?.length){
@@ -87,15 +88,15 @@ class Users {
                 });
             }
             else{
-                await compare(password, 
-                    result[0].password,
+                await compare(userPassword, 
+                    result[0].userPassword,
                     (cErr, cResult) => {
                         if(cErr) throw cErr;
 
                         // create token
                         const token = createToken({
                             email, 
-                            password
+                            userPassword
                         });
 
                         // save token 
@@ -132,7 +133,7 @@ class Users {
         const data = req.body;
 
         // encrypt password 
-        data.password = hashSync(data.password, 20); 
+        data.userPassword = hashSync(data.userPassword, 20); 
 
         db.query(query, [data, req.params.id], 
             (err) => {

@@ -4,7 +4,7 @@ require("dotenv").config();
 function createToken(user){
     return sign({
         email: user.email,
-        password: user.password, 
+        userPassword: user.userPassword, 
     }, 
 
     process.env.SECRET_KEY,
