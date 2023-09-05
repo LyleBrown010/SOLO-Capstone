@@ -13,10 +13,19 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active text-black" aria-current="page" href="#"><router-link to="/">Home</router-link></a>
+            <router-link to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <router-link to="/about">About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/products">Products</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/admin">Admin</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/contact">Contact</router-link>
           </li>
         </ul>
       </div>
