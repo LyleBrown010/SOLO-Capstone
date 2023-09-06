@@ -9,7 +9,7 @@ export default createStore({
     products: null, 
     product: null, 
     selectedProducts: null,
-    spinner: null,
+    cart: null,
     message: null, 
     asc: true
   },
@@ -30,8 +30,8 @@ export default createStore({
     setSelectedProducts(state, product){
       state.selectedProduct = product
     }, 
-    setSpinner(state, spinner){
-      state.spinner = spinner;
+    setCart(state, cart){
+      state.cart = cart
     },
     setMessage(state, message){
       state,message = message;
@@ -100,10 +100,135 @@ export default createStore({
 
     },
 
-    
+    async updateUser(context, payload){
+      console.log(payload)
+      try{
+        const res = await axios.patch(`${url}users/${payload.userID}`, payload.data);
+        const {message, err} = res.data
+        if(message){
+          context.commit("setUser", message)
+        }
+        else{
+          context.commit("setMessage", err)
+        }
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred in updating a user");
+      }
+    },
+
+    async deleteUser(context, id){
+      try{
+        const {res} = await axios.delete(`${url}user/${id}`);
+        const {message, err} = res.data
+        if(err){
+          console.error("An error has occurred: ", err)
+          context.commit("setMessage", "An error has occurred in deleting a user")
+        }
+        if(message){
+          context.dispatch("fetchProducts")
+          context.commit("setUser", message)
+          console.log("User deleted successfully")
+        }
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred in deleting a user");
+      }
+    }, 
 
     //products
+    async fetchProducts(context){
+      try{
+        const {data} = await axios.get(`${url}products`);
+        context.commit("setProducts", data.results);
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred in a fetching products");
+      }
+    }, 
+
+    async fetchProduct(context, id){
+      try{
+        const{data} = await axios.get(`${url}product/${id}`);
+        context.commit("setProduct", data.results);
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred in a fetching a single product");
+      }
+    },
+
+    async addProduct(context, payload){
+      console.log("addProduct function started");
+      try{
+        const {res} = await axios.post(`${url}product`, payload);
+        const {message, err} = await res.data; 
+        console.log(message, err);
+        if(message){
+          context.commit("setProduct", message);
+        }
+        else{
+          context.commit("setMessage", err);
+        }
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred while adding a product"); 
+      }
+    }, 
+
+    async updateProduct(context, payload){
+      console.log(payload)
+      try{
+        const res = await axios.patch(`${url}product/${payload.prodID}`, payload);
+        const{message, err} = await res.data;
+        console.log(message, err); 
+        if(err){
+          console.log("An error has occurred: ", err);
+          context.commit("setMessage", err); 
+        }
+        if(message){
+          context.dispatch("fetchProducts")
+          context.commit("setProduct", message);
+          context.commit("setMessage", "Successfully updated product");
+        }
+      }
+      catch(e){
+        context.commit("setMessage", e);
+      }
+    },
+
+    async deleteProduct(context, prodID){
+      console.log("delete function called"); 
+      try{
+        const {res} = await axios.delete(`${url}product/${prodID}`);
+        const {message, err} = await res.data;
+        if(err){
+          alert("An error has occurred, please try again");
+        }
+        if(message){
+          context.commit("setProduct", message);
+        }
+        else{
+          context.commit("setMessage", "An error occurred");
+        }
+      }
+      catch(e){
+        context.commit("setMessage", "An error occurred while deleting a product");
+      }
+    },
 
     //cart
+    async getCart(context, id){
+      try{
+        const {res} = await axios.get(`${url}user/${id}/carts`);
+        context.commit("setCart", data.results); 
+      }
+      catch(e){
+        context.commit("setMessage", "Error fetching the cart")
+      }
+    },
+
+    async addToCart(context, payload){
+      
+    }
   }
 })
