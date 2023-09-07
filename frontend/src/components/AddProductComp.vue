@@ -1,98 +1,102 @@
 <template>
     <div>
-        <!-- Modal Button -->
         <div class="button">
             <a 
-            data-bs-toggle="modal"
-            data-bs-target="add-product-modal"
+            data-bs-toggle = "modal"
+            data-bs-target = "#add-product-modal"
             href="#add-product-modal"
             class=""
             >Add Product</a>
         </div>
 
-        <!-- Modal -->
         <div class="modal" id="add-product-modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1>Add Product:</h1>
-                        <button 
+                        <h1>Add Product: </h1>
+                        <button
                         type="button"
                         class="btn-close"
                         data-bs-dismiss="modal"
                         ></button>
                     </div>
+
                     <div>
-                        <form>
+                        <form  class="card">
                             <div>
-                                <label for="prodID" class="form-label">Product ID: </label>
+                                <!-- <label for="prodID" class="form-label">Product Name</label>
                                 <input 
                                 v-model="model.product.prodID"
-                                type="text" 
-                                name="prodID" 
+                                type="text"
                                 id="prodID"
-                                class="form-control input-bg"/>
-
-                                <label for="productName" class="form-label">Product Name: </label>
+                                name="prodID"
+                                class="form-control"
+                                /> -->
+                                <label for="productName" class="form-label">Product Name</label>
                                 <input 
                                 v-model="model.product.productName"
-                                type="text" 
-                                name="productName" 
+                                type="text"
                                 id="productName"
-                                class="form-control input-bg"/>
-
+                                name="productName"
+                                class="form-control"
+                                />
                                 <label for="productPrice" class="form-label">Price</label>
                                 <input 
                                 v-model="model.product.productPrice"
-                                type="text" 
-                                name="productPrice" 
+                                type="number"
                                 id="productPrice"
-                                class="form-control input-bg"/>
-
+                                name="productPrice"
+                                class="form-control"
+                                />
                                 <label for="category" class="form-label">Category</label>
                                 <input 
                                 v-model="model.product.category"
-                                type="text" 
-                                name="category" 
+                                type="text"
                                 id="category"
-                                class="form-control input-bg"/>
-
+                                name="category"
+                                class="form-control"
+                                />
                                 <label for="productDescription" class="form-label">Description</label>
                                 <input 
                                 v-model="model.product.productDescription"
-                                type="text" 
-                                name="productDescription" 
+                                type="text"
                                 id="productDescription"
-                                class="form-control input-bg"/>
-
+                                name="productDescription"
+                                class="form-control"
+                                />
                                 <label for="artistName" class="form-label">Artist Name</label>
                                 <input 
                                 v-model="model.product.artistName"
-                                type="text" 
-                                name="artistName" 
+                                type="text"
                                 id="artistName"
-                                class="form-control input-bg"/>
-
+                                name="artistName"
+                                class="form-control"
+                                />
                                 <label for="productUrl" class="form-label">Image</label>
                                 <input 
                                 v-model="model.product.productUrl"
-                                type="text" 
-                                name="productUrl" 
+                                type="text"
                                 id="productUrl"
-                                class="form-control input-bg"/>
+                                name="productUrl"
+                                class="form-control"
+                                />
                             </div>
+                        
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button
-                        type="submit"
-                        class=""
-                        data-bs-dismiss="modal"
-                        >Add Product</button>
-                        <button
-                        type="reset"
-                        class=""
-                        >Clear Fields</button>
+                        <div class="p-3 text-center">
+                            <button
+                            type="submit"
+                            class="btn m-2 add-btn text-font"
+                            @click="addProduct()"
+                            >
+                            Add Product
+                            </button>
+                            <button type="reset" class="btn m-2 clr-btn text-font">
+                            Clear Fields
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -103,11 +107,12 @@
 
 <script>
 export default {
+    // props: ["product"],
     data(){
         return{
             model: {
                 product:{
-                    prodID: "", 
+                    // prodID: "",
                     productName: "",
                     productPrice: "",
                     category: "",
@@ -121,12 +126,13 @@ export default {
 
     methods: {
         addProduct(){
-            this.$store.dispatch("addProduct", this.model.product);
-            this.$router.push("/admin"); 
-            setTimeout(() => {
-            console.log("Reload");
-            location.reload()
-            }, 50000);
+            this.$store.dispatch("addProduct", this.model.product)
+            .then(() => {
+                this.$router.push({name:"/admin"}); 
+            })
+            .catch((error) => {
+                console.error(error)
+            })
         }
     }
 }

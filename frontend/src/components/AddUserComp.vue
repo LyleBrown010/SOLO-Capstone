@@ -77,19 +77,19 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-          <div class="p-3 text-center">
-            <button
-              type="submit"
-              class="btn m-2 add-btn text-font"
-              @click="addUser()"
-            >
-              Register!
-            </button>
-            <button type="reset" class="btn m-2 clr-btn text-font">
-              Clear Fields
-            </button>
-          </div>
-        </div>
+                        <div class="p-3 text-center">
+                            <button
+                            type="submit"
+                            class="btn m-2 add-btn text-font"
+                            @click="addUser()"
+                            >
+                            Register!
+                            </button>
+                            <button type="reset" class="btn m-2 clr-btn text-font">
+                            Clear Fields
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,11 +115,13 @@ export default {
     },
     methods: {
         addUser(){
-            this.$store.dispatch("register", this.model.user);
-            console.log(this.model.user);
-            setTimeout(() => {
-            location.reload();
-            }, 50000);
+            this.$store.dispatch("register", this.model.user)
+            .then(() => {
+                this.$router.push({name: "admin"});
+            })
+            .catch((error) => {
+                console.error(error);
+            })
         }
     }
 }

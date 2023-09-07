@@ -34,40 +34,30 @@
           </div>
           <div class="modal-body card">
             <div>
-            <label for="prodID" class="form-label">Product ID</label>
-            <input class=".input-bg"
-              placeholder="id"
-              type="text"
-              v-model="editingProduct.prodID"
-              required oninvalid="this.setCustomValidity('Please insert the productID')"
-            oninput="this.setCustomValidity('')"
-            />
 
-            </div>
-
-            <label for="prodName" class="form-label">Product Name: </label>
+            <label for="productName" class="form-label">Product Name: </label>
             <input class=".input-bg"
               placeholder="name"
               type="text"
-              v-model="editingProduct.prodName"
+              v-model="editingProduct.productName"
             /> <br>
-            <label for="quantity" class="form-label">Quantity: </label>
+            <label for="productPrice" class="form-label">Price: </label>
             <input class=".input-bg"
-              placeholder="quantity"
+              placeholder="price"
               type="number"
-              v-model="editingProduct.quantity"
+              v-model="editingProduct.productPrice"
             /> <br>
             <label for="description" class="form-label">Description: </label>
             <input class=".input-bg"
               placeholder="description"
               type="text"
-              v-model="editingProduct.prodDesc"
+              v-model="editingProduct.productDescription"
             /> <br>
-            <label for="amount" class="form-label">Price: </label>
+            <label for="artistName" class="form-label">Artist Name: </label>
             <input class=".input-bg"
-              placeholder="amount"
-              type="number"
-              v-model="editingProduct.amount"
+              placeholder="artistName"
+              type="text"
+              v-model="editingProduct.artistName"
             /> <br>
             <label for="category" class="form-label">Category: </label>
             <input class=".input-bg"
@@ -75,11 +65,11 @@
               type="text"
               v-model="editingProduct.category"
             /> <br>
-            <label for="prodUrl" class="form-label">Product Image: </label>
+            <label for="productUrl" class="form-label">Product Image: </label>
             <input class=".input-bg"
               placeholder="image"
               type="text"
-              v-model="editingProduct.prodUrl"
+              v-model="editingProduct.productUrl"
             />
           </div>
           <div class="modal-footer">
@@ -102,6 +92,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -115,13 +106,13 @@ export default {
       editingProductID: null,
       model: {
         product: {
-            prodID: "",
-          prodName: "",
-          quantity: "",
-          amount: 0,
+          prodID: "",
+          productName: "",
+          productPrice: 0,
+          artistName: "",
           category: "",
-          prodDesc: "",
-          prodUrl: "",
+          productDescription: "",
+          productUrl: "",
         },
       },
     };

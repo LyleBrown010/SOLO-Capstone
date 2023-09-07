@@ -103,7 +103,7 @@ export default createStore({
     async updateUser(context, payload){
       console.log(payload)
       try{
-        const res = await axios.patch(`${url}users/${payload.userID}`, payload.data);
+        const res = await axios.patch(`${url}user/${payload.userID}`, payload.data);
         const {message, err} = res.data
         if(message){
           context.commit("setUser", message)

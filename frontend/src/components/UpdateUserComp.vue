@@ -60,22 +60,6 @@
             />
             </div>
             <div class="mb-3 text-font">
-              <label for="">Age</label> <br>
-            <input
-              type="number"
-              placeholder="age"
-              v-model="editingUser.userAge"
-            />
-            </div>
-            <div class="mb-3 text-font">
-              <label for="">Gender</label> <br>
-            <input
-              type="text"
-              placeholder="gender"
-              v-model="editingUser.gender"
-            />
-            </div>
-            <div class="mb-3 text-font">
               <label for="">Role</label> <br>
             <input
               type="text"
@@ -88,7 +72,7 @@
             <input
               type="text"
               placeholder="email address"
-              v-model="editingUser.emailAdd"
+              v-model="editingUser.email"
             />
             </div>
             <div class="mb-3 text-font">
@@ -131,8 +115,6 @@ export default {
         user: {
           firstName: "",
           lastName: "",
-          userAge: "",
-          gender: "",
           userRole: "",
           emailAdd: "",
           userProfile: "",
@@ -163,7 +145,7 @@ export default {
           console.log("User updated!");
           setTimeout(() => {
             window.location.reload();
-          }, 5000);
+          }, 500);
         })
         .catch((err) => {
           console.error("Error updating: ", err);
