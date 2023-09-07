@@ -145,7 +145,7 @@ export default {
           console.log("User updated!");
           setTimeout(() => {
             window.location.reload();
-          }, 500);
+          }, 5000);
         })
         .catch((err) => {
           console.error("Error updating: ", err);
