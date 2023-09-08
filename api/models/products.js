@@ -17,12 +17,12 @@ class Products{
     fetchProduct(req, res){
         const query = `SELECT prodID, productName, productDescription, productPrice, category, productUrl, artistName FROM Products WHERE prodID = '${req.params.id}';`;
 
-        db.query(query, (err, result) => {
+        db.query(query, (err, results) => {
             if(err) throw err;
 
             res.json({
                 status: res.statusCode, 
-                result
+                results
             });
         });
     }

@@ -24,12 +24,12 @@ class Users {
         FROM Users 
         WHERE userID = ${req.params.id};`
 
-        db.query(query, (err, result) => {
+        db.query(query, (err, results) => {
             if(err) throw err
 
             res.json({
                 status: res.statusCode,
-                result
+                results
             });
         });
     }
