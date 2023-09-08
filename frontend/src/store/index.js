@@ -1,11 +1,15 @@
 import { createStore } from 'vuex'
 import axios from 'axios';
+import router from '@/router';
+import sweet from 'sweetalert'
+import {userCookies} from 'vue3-cookies';
 const url = "https://solo-4p4z.onrender.com/";
+import authUser from '@/services/AuthenticateUser'
 
 export default createStore({
   state: {
     users: null, 
-    user:null, 
+    user:null || JSON.parse(localStorage.getItem('user')), 
     products: null, 
     product: null, 
     selectedProducts: null,
@@ -19,7 +23,9 @@ export default createStore({
       state.users = users;
     }, 
     setUser(state, user){
-      state.user = user; 
+      state.user = user, 
+      state.userAuth = true, 
+      localStorage.setItem('user', JSON.stringify(user)); 
     },
     setProducts(state, products){
       state.products = products;
@@ -97,7 +103,27 @@ export default createStore({
     }, 
 
     async login(context, payload){
-
+      try{
+        const response = await axios.post(`${url}login`, payload); 
+        alert ('LOGGED IN')
+        const {result, jwToken, message, err} = await response.data
+        if(result){
+          context.commit ('setUser', result);
+          context.commit('setToken', jwToken);
+          localStorage.setItem('loginToken', jwToken); 
+          localStorage.setItem('user', JSON.stringify(result));
+          context.commit('setMessage', message)
+          setTimeout(() => {
+            router.push({name: 'products'})
+          }), 3000
+        }
+        else{
+          context.commit('setMessage', err);
+        }
+      }
+      catch(error){
+        console.error(error); 
+      }
     },
 
     async updateUser(context, payload){

@@ -31,6 +31,26 @@ const routes = [
     name: 'single product',
     component: () => import('../views/SingleProductView.vue')
   },
+  {
+    path: '/register',
+    name: 'register', 
+    component: () => import('../views/RegisterView.vue')
+  }, 
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LogInView.vue')
+  }, 
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/userProfileView.vue')
+  },
+  {
+    path: '/checkout', 
+    name: 'checkout', 
+    component: () => import('../components/CheckoutComp.vue')
+  }
 ]
 
 const router = createRouter({

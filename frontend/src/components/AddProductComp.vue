@@ -128,7 +128,7 @@ export default {
         addProduct(){
             this.$store.dispatch("addProduct", this.model.product)
             .then(() => {
-                this.$router.push({name:"/admin"}); 
+                this.$router.push({name:"admin"}); 
             })
             .catch((error) => {
                 console.error(error)

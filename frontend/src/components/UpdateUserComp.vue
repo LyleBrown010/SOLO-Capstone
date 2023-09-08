@@ -91,7 +91,7 @@
             <button
               type="button"
               class="btn"
-              @click="updateProduct(user.userID)"
+              @click="updateUser(user.userID)"
             >
               Update!
             </button>
@@ -135,22 +135,35 @@ export default {
         ...this.$store.state.users.find((user) => user.userID === id),
       };
     },
-    updateProduct(id) {
-      this.$store
-        .dispatch("updateUser", {
-          userID: id,
-          data: { ...this.editingUser },
-        })
-        .then(() => {
-          console.log("User updated!");
-          setTimeout(() => {
-            window.location.reload();
-          }, 5000);
-        })
-        .catch((err) => {
-          console.error("Error updating: ", err);
-        });
-    },
+    // updateUser(id) {
+    //   this.$store
+    //     .dispatch("updateUser", {
+    //       userID: id,
+    //       data: { ...this.editingUser },
+    //     })
+    //     .then(() => {
+    //       console.log("User updated!");
+    //       setTimeout(() => {
+    //         window.location.reload();
+    //       }, 500);
+    //     })
+    //     .catch((err) => {
+    //       console.error("Error updating: ", err);
+    //     });
+    // },
+
+    updateUser(id){
+      this.$store.dispatch("updateUser", {
+        userID: id, 
+        data: {...this.editingUser}
+      })
+      .then(() => {
+        this.$router.push({name: "admin"});
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
   },
 };
 </script>

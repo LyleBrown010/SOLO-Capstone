@@ -18,12 +18,14 @@
 
   </div>
   <div v-else> 
-    loadingggggggg
+    <spinner-comp/>
   </div>
 </template>
 
 <script>
+import SpinnerComp from '../components/SpinnerComp.vue';
 export default {
+  components: { SpinnerComp },
   props: ["product"], 
 
   computed:{
