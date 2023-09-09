@@ -106,12 +106,12 @@ export default createStore({
       try{
         const response = await axios.post(`${url}login`, payload); 
         alert ('LOGGED IN')
-        const {result, jwToken, message, err} = await response.data
-        if(result){
-          context.commit ('setUser', result);
+        const {results, jwToken, message, err} = await response.data
+        if(results){
+          context.commit ('setUser', results);
           context.commit('setToken', jwToken);
           localStorage.setItem('loginToken', jwToken); 
-          localStorage.setItem('user', JSON.stringify(result));
+          localStorage.setItem('user', JSON.stringify(results));
           context.commit('setMessage', message)
           setTimeout(() => {
             router.push({name: 'products'})
