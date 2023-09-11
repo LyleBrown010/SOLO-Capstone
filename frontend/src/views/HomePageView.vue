@@ -68,7 +68,7 @@
 
 #text{
     font-size: 30px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Rubik Mono One', sans-serif;
 }
 .body {
     margin: 0;

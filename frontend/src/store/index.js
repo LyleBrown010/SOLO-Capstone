@@ -92,6 +92,7 @@ export default createStore({
     },
 
     async register(context, payload){
+      console.log("register function started");
       try{
         const res = await axios.post(`${url}register`, payload);
         const {message, err} = await res.data;

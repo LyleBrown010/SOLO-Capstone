@@ -5,13 +5,12 @@
     <h1 class="users">Users</h1>
     <addUser />
     <div class="table">
-          <table>
+          <table class="text-center">
       <thead>
         <tr>
           <th>ID</th>
           <th>Name</th>
           <th>Surname</th>
-          <th>Password</th>
           <th>Role</th>
           <th>Email Address</th>
           <th>Profile Image</th>
@@ -23,7 +22,6 @@
           <td>{{ user.userID }}</td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
-          <td>{{ user.userPassword }}</td>
           <td>{{ user.userRole }}</td>
           <td>{{ user.email }}</td>
           <td class="image">
@@ -155,3 +153,22 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+table{
+  padding: 5px;
+  border: 2px solid #FFBF00;
+}
+
+th, td{
+  border-right: 2px solid #FFBF00;
+  padding: 4px;
+  color: #FFDF7D;
+  background-color: black;
+}
+</style>

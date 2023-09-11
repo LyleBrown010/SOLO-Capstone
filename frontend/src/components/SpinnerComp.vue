@@ -3,6 +3,7 @@
 </template>
 
 <style scoped>
+
 .loader {
   position: relative;
   width: 120px;
@@ -18,7 +19,7 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: yellow;
+  background: #FFBF00;
   animation: loading-bounce 0.5s ease-in-out infinite alternate;
 }
 

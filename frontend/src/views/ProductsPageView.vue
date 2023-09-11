@@ -1,5 +1,6 @@
 <template>
-  <div v-if="products">
+  <div class="container">
+    <div v-if="products">
     <div v-for="product in products" :key="product" :product="product">
       <div class="card">
         <div class="img">
@@ -19,6 +20,7 @@
   </div>
   <div v-else> 
     <spinner-comp/>
+  </div>
   </div>
 </template>
 
@@ -48,3 +50,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container{
+  height: 75vh;
+}
+</style>

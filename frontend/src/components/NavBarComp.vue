@@ -1,6 +1,6 @@
 <template>
 <div>
-<nav class="navbar bg-black border-bottom border-body" data-bs-theme="dark">
+<nav class="navbar bg-black navbar-expand-lg border-body" data-bs-theme="dark">
   <div class="container-fluid row">
     <div class="col-4">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,8 @@
 #text{
   color: #FFBF00;
   text-decoration: none;
+  font-family: 'Rubik Mono One', sans-serif;
+
 }
 
 .navbar-toggler{
