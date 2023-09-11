@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 import axios from 'axios';
 import router from '@/router';
 import sweet from 'sweetalert'
-import {userCookies} from 'vue3-cookies';
+import {useCookies} from 'vue3-cookies';
+const {cookies} = useCookies()
 const url = "https://solo-4p4z.onrender.com/";
 import authUser from '@/services/AuthenticateUser'
 
@@ -13,6 +14,7 @@ export default createStore({
     products: null, 
     product: null, 
     selectedProducts: null,
+    token: null,
     cart: null,
     message: null, 
     asc: true
@@ -36,6 +38,9 @@ export default createStore({
     setSelectedProducts(state, product){
       state.selectedProduct = product
     }, 
+    setToken(state, token){
+      state.token = token
+    },
     setCart(state, cart){
       state.cart = cart
     },
@@ -101,30 +106,68 @@ export default createStore({
         context.commit("setMessage", "An error occurred"); 
       }
     }, 
-
+      // token = AuthorisedUser
     async login(context, payload){
       try{
-        const response = await axios.post(`${url}login`, payload); 
-        alert ('LOGGED IN')
-        const {results, jwToken, message, err} = await response.data
+        const {message, token, payload} = (
+          await axios.post(`${url}login`, payload)
+        ).data; 
         if(results){
-          context.commit ('setUser', results);
-          context.commit('setToken', jwToken);
-          localStorage.setItem('loginToken', jwToken); 
-          localStorage.setItem('user', JSON.stringify(results));
-          context.commit('setMessage', message)
-          setTimeout(() => {
-            router.push({name: 'products'})
-          }), 3000
+          context.commit("setUser", {results, message});
+          useCookies.set("AuthorisedUser", { message, token, results});
+          authUser.applyToken(token);
+          sweet({
+            title: message,
+            text: `Welcome back ${results?.firstName} ${results?.lastName}`, 
+            icon: "success", 
+            timer: 4000,
+          });
+          router.push({name: "profile"});
         }
         else{
-          context.commit('setMessage', err);
+          sweet({
+            title: "Error",
+            text: message, 
+            icon: "error",
+            timer: 4000
+          });
         }
       }
-      catch(error){
-        console.error(error); 
+      catch(e){
+        context.commit("setMessage", "An error has occurred while logging in")
       }
     },
+
+    async logOut(context){
+      context.commit("setUser")
+      cookies.remove("AuthenticatedUser");
+    },
+
+
+
+    // async login(context, payload){
+    //   try{
+    //     const response = await axios.post(`${url}login`, payload); 
+    //     alert ('LOGGED IN')
+    //     const {results, jwToken, message, err} = await response.data
+    //     if(results){
+    //       context.commit ('setUser', results);
+    //       context.commit('setToken', jwToken);
+    //       localStorage.setItem('loginToken', jwToken); 
+    //       localStorage.setItem('user', JSON.stringify(results));
+    //       context.commit('setMessage', message)
+    //       setTimeout(() => {
+    //         router.push({name: 'products'})
+    //       }), 3000
+    //     }
+    //     else{
+    //       context.commit('setMessage', err);
+    //     }
+    //   }
+    //   catch(error){
+    //     console.error(error); 
+    //   }
+    // },
 
     async updateUser(context, payload){
       console.log(payload)
