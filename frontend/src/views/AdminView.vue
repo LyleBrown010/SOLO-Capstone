@@ -77,7 +77,7 @@
             <td>
               <img
                 :src="product.prodUrl"
-                :alt="product.prodUrl"
+                :alt="product.productName"
                 class="img-fluid image"
                 loading="lazy"
               />

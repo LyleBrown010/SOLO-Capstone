@@ -1,37 +1,25 @@
 <template>
-    <div class="single-view">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 flex" v-if="products">
-      <div class="col flex" v-for="product in products" :key="product">
-        <div class="card" id="test">
-          <div class="img-bg">
-          <img
-            :src="product.productUrl"
-            class="card-img-top img-fluid"
-            id="image"
-            :alt="product.productName"
-          />
-          </div>
-          <div class="card-body">
-            <div class="title">
-              <h5 class="card-title">{{ product.productName }}</h5>
-            </div>
-            <div class="price">
-    
-              <p class="card-text"> R{{ product.productPrice }}</p>
-            </div>
-            <!-- <div class="button">
-              <button @click="viewProduct(product.prodID)" class="btn">
-                View Details
-              </button>
-            </div> -->
-          </div>
+
+  <div class="single-view">
+    <div v-if="product" class="card">
+      <div>
+        <div class="image-section">
+          <img :src="product.productUrl" :alt="product.productName" />
         </div>
+        <h1 class="text-center">{{ product.productName }}</h1>
+        <p class="fs-4">Category: {{ product.category }}</p>
+        <p>{{ product.productDescription }}</p>
+        <p class="fs-2">Price: R{{ product.productPrice }}</p>
       </div>
     </div>
+    <div v-else>
+      <Spinner />
     </div>
+  </div>
 </template>
 
 <script>
+import Spinner from '@/components/SpinnerComp.vue'
 export default {
     computed: {
         product(){

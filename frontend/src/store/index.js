@@ -35,7 +35,7 @@ export default createStore({
     setProduct(state, product){
       state.product = product;
     },
-    setSelectedProducts(state, product){
+    setSelectedProduct(state, product){
       state.selectedProduct = product
     }, 
     setToken(state, token){
@@ -115,7 +115,7 @@ export default createStore({
         ).data; 
         if(results){
           context.commit("setUser", {results, message});
-          useCookies.set("AuthorisedUser", { message, token, results});
+          cookies.set("AuthorisedUser", { message, token, results});
           authUser.applyToken(token);
           sweet({
             title: message,
@@ -235,6 +235,12 @@ export default createStore({
         console.log(message, err);
         if(message){
           context.commit("setProduct", message);
+          sweet({
+            title: message,
+            text: "Successfully added product",
+            icon: "success", 
+            timer: 2000
+          })
         }
         else{
           context.commit("setMessage", err);
