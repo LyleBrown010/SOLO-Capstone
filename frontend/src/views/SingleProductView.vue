@@ -25,6 +25,10 @@ export default {
         product(){
             return this.$store.state.selectedProduct
         }
+    },
+
+    components: {
+      Spinner
     }
 }
 </script>

@@ -3,7 +3,7 @@
       <h3 class="h3">ACCOUNT LOGIN</h3>
       <div style="display: flex; justify-content:center">
         <div class="row">
-        <form action="action_page.php" method="post" @submit.prevent="login">
+        <form @submit.prevent="login">
           <div class="container">
           <label for="email"><b>Email Address</b></label>
         <input type="text" placeholder="Enter Username" v-model="payload.email" name="email" required>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+    import {useCookies} from "vue3-cookies";
+    const {cookies} = useCookies();
   export default {
     data() {
     return {
@@ -33,11 +35,20 @@
     user() {
       return this.$store.state.user;
     },
+
+    message(){
+        return this.$store.state.message
+    },
   },
   methods: {
     login() {
       this.$store.dispatch("login", this.payload);
+      this.$router.push("/profile");
     },
+  },
+
+  mounted(){
+    console.log(cookies.get('setToken'))
   },
   beforeCreate() {
     this.$store.dispatch("fetchUsers");

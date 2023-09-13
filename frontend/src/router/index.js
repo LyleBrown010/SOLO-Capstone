@@ -42,6 +42,16 @@ const routes = [
     component: () => import('../views/LogInView.vue')
   }, 
   {
+    path: '/logout',
+    name: 'logout',
+    beforeEnter() {
+      localStorage.removeItem('setToken')
+      localStorage.removeItem('user')
+      window.location.reload()
+      router.push({name: 'login'})
+    }
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => import('../views/userProfileView.vue')

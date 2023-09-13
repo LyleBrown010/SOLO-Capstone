@@ -5,16 +5,17 @@ import sweet from 'sweetalert'
 import {useCookies} from 'vue3-cookies';
 const {cookies} = useCookies()
 const url = "https://solo-4p4z.onrender.com/";
-import authUser from '@/services/AuthenticateUser'
+// import authUser from '@/services/AuthenticateUser'
 
 export default createStore({
   state: {
     users: null, 
-    user:null || JSON.parse(localStorage.getItem('user')), 
+    user:null || JSON.parse(localStorage.getItem("user")), 
+    userAuth: null,
     products: null, 
     product: null, 
-    selectedProducts: null,
-    token: null,
+    selectedProduct: null,
+    token: null || localStorage.getItem("token"),
     cart: null,
     message: null, 
     asc: true
@@ -27,7 +28,10 @@ export default createStore({
     setUser(state, user){
       state.user = user, 
       state.userAuth = true, 
-      localStorage.setItem('user', JSON.stringify(user)); 
+      localStorage.setItem("user", JSON.stringify(user)); 
+    },
+    setUserLoggedIn(state, setUserLoggedIn){
+      state.setUserLoggedIn = setUserLoggedIn; 
     },
     setProducts(state, products){
       state.products = products;
@@ -83,7 +87,7 @@ export default createStore({
 
     async fetchUser(context){
       try{
-        const {data} = await axios.get(`${url}user`);
+        const {data} = await axios.get(`${url}user/${payload.userID}, payload.data`);
         context.commit("setUser", data.results)
       }
       catch(e){
@@ -101,6 +105,9 @@ export default createStore({
         }
         if(message){
           context.commit("setUser", message);
+          setTimeout(() => {
+            router.push('/login')
+          }), 5000
         }
       }
       catch(e){
@@ -110,13 +117,16 @@ export default createStore({
       // token = AuthorisedUser
     async login(context, payload){
       try{
-        const {message, token, payload} = (
-          await axios.post(`${url}login`, payload)
-        ).data; 
+        const res = await axios.post(`${url}login`, payload);
+        const {results, token, message, error} = await res.data;
+
         if(results){
-          context.commit("setUser", {results, message});
-          cookies.set("AuthorisedUser", { message, token, results});
-          authUser.applyToken(token);
+          context.commit("setUser", results);
+          context.commit("setToken", token);
+          localStorage.setItem("setToken", token);
+          localStorage.setItem("user", JSON.stringify(results));
+
+          cookies.set("AuthorizedUser", {token, message, results});
           sweet({
             title: message,
             text: `Welcome back ${results?.firstName} ${results?.lastName}`, 
@@ -126,18 +136,45 @@ export default createStore({
           router.push({name: "profile"});
         }
         else{
-          sweet({
-            title: "Error",
-            text: message, 
-            icon: "error",
-            timer: 4000
-          });
+          context.commit("setMessage", err);
         }
       }
       catch(e){
-        context.commit("setMessage", "An error has occurred while logging in")
+        console.error(e)
       }
+
     },
+
+
+
+      // try{
+      //   const {message, token, payload} = (
+      //     await axios.post(`${url}login`, payload)
+      //   ).data; 
+      //   if(results){
+      //     context.commit("setUser", {results, message});
+      //     cookies.set("AuthorisedUser", { message, token, results});
+      //     authUser.applyToken(token);
+      //     sweet({
+      //       title: message,
+      //       text: `Welcome back ${results?.firstName} ${results?.lastName}`, 
+      //       icon: "success", 
+      //       timer: 4000,
+      //     });
+      //     router.push({name: "profile"});
+      //   }
+      //   else{
+      //     sweet({
+      //       title: "Error",
+      //       text: message, 
+      //       icon: "error",
+      //       timer: 4000
+      //     });
+      //   }
+      // }
+      // catch(e){
+      //   context.commit("setMessage", "An error has occurred while logging in")
+      // }
 
     async logOut(context){
       context.commit("setUser")
