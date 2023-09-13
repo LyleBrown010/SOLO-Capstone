@@ -57,7 +57,7 @@ class Users {
 
                 //create token
                 let token = createToken(user)
-                res.cookie("AuthorisedUser", token, {
+                res.cookie("AuthorizedUser", token, {
                     maxAge: 3600000, //age of token , 3600000=1 hour
                     httpOnly: true 
                 });
