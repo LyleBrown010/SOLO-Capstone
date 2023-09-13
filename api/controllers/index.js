@@ -82,14 +82,16 @@ routes.patch('/user/:id/cart/:id', bodyParser.json(), (req, res) => {
     cart.updateCart(req, res)
 })
 
-routes.delete('/user/:id/cart', bodyParser.json(), (req, res) => {
+routes.delete('/user/:id/cart', (req, res) => {
     cart.deleteCart(req, res)
 })
 
+routes.delete('user/:id/cart/:id', (req, res) => {
+    cart.removeFromCart(req, res)
+}), 
 
 
 module.exports = {
     express, 
     routes, 
-    cart
 }
