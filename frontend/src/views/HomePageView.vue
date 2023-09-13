@@ -1,7 +1,8 @@
 <template>
 <div class="body">
-    <div class="">
+    <div class="main">
         <img id="back" src="https://i.postimg.cc/63tqFbWd/main-background.jpg" alt="">
+        <div class="center">WELCOME TO SOLO.</div>
     </div>
 
     <div class="moving-strip-container">
@@ -21,11 +22,11 @@
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <main id="carousel">
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"><img id="featured" src="https://i.postimg.cc/59wzdHCb/download.jpg" alt=""></div>
-            <div class="item"></div>
-            <div class="item"></div>
+            <div class="item"><img id="featured" src="https://i.postimg.cc/MHnKLyL2/Wall-Wonders.jpg" alt=""></div>
+            <div class="item"><img id="featured" src="https://i.postimg.cc/Pq6CFrqD/Towers-of-Misfortune.jpg" alt=""></div>
+            <div class="item"><img id="featured" src="https://i.postimg.cc/k40XkVP2/Milky.jpg" alt=""></div>
+            <div class="item"><img id="featured" src="https://i.postimg.cc/76MWycpS/A-Gardens-gift.jpg" alt=""></div>
+            <div class="item"><img id="featured" src="https://i.postimg.cc/6p4mZ5Qz/Mother.jpg" alt=""></div>
         </main>
     </div>
 
@@ -39,14 +40,15 @@
         </div>
     </div>
     <div class="row" id="upcoming">
-        <div class="col-6">
-            <h1>LOCATION: SOLO HQ</h1>
-            <h1>ENTRANCE FEE: Utter Secret Password</h1>
+        <div class="col-5 p-4">
+            <h1>SOLO. <br>Launch Event</h1>
+            <h4>LOCATION: SOLO HQ</h4>
+            <h5>ENTRANCE FEE: Utter Secret Password</h5>
             <label for="showTextCheckbox">PASSWORD</label>
             <input type="checkbox" id="showTextCheckbox">
-            <p id="displayText">This is the text to be shown.</p>
+            <p id="displayText">I-LOVE-SOLO</p>
         </div>
-        <div class="col-6"></div>
+        <div class="col-7"><img id="event" src="https://i.postimg.cc/ZqjRXVrM/aleksandr-popov-9v-Ddkx-SCAD4-unsplash.jpg" alt=""></div>
     </div>
 </div>
 
@@ -54,8 +56,26 @@
 </template>
 
 <style scoped>
+.main{
+  position: relative;
+  text-align: center;
+}
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #FFBF00;
+}
 #upcoming{
-    background-color: #FFDF7D;
+    background-color: #FFBF00;
+    height: 50vh;
+}
+
+#event{
+  width:100%;
+  height: 100%;
 }
 #back{
     width: 100%;
@@ -122,7 +142,7 @@ main#carousel {
   --items: 5;
   --middle: 3;
   --position: 1;
-  pointer-events: none;
+  pointer-events: visiblePainted;
 }
 
 div.item {
@@ -165,6 +185,7 @@ input:nth-of-type(1) {
 }
 input:nth-of-type(1):checked ~ main#carousel {
   --position: 1;
+  
 }
 
 input:nth-of-type(2) {
@@ -206,8 +227,8 @@ input:nth-of-type(5):checked ~ main#carousel {
 
 /* Style the label to look like a button */
 label {
-    background-color: #007BFF;
-    color: #fff;
+    background-color: black;
+    color: #FFBF00;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;

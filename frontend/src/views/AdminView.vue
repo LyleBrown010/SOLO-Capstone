@@ -74,11 +74,11 @@
             <td>{{ product.productPrice }}</td>
             <td>{{ product.category }}</td>
             <td>{{ product.artistName }}</td>
-            <td>
+            <td >
               <img
-                :src="product.prodUrl"
+                :src= product.productUrl
                 :alt="product.productName"
-                class="img-fluid image"
+                class="img-fluid product-image"
                 loading="lazy"
               />
             </td>
@@ -94,6 +94,7 @@
           </tr>
         </tbody>
       </table>
+      <br>
       </div>
     </div>
   </div>
@@ -163,6 +164,7 @@ export default {
 table{
   padding: 5px;
   border: 2px solid #FFBF00;
+  width: 100%;
 }
 
 th, td{
@@ -170,5 +172,15 @@ th, td{
   padding: 4px;
   color: #FFDF7D;
   background-color: black;
+}
+
+.product-image{
+  width: 100%;
+  height: 100%;
+}
+
+.image{
+  width: 50px;
+  height: 50px;
 }
 </style>

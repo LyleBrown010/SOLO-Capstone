@@ -5,7 +5,7 @@
             data-bs-toggle = "modal"
             data-bs-target = "#add-user-modal"
             href="#add-user-modal"
-            class=""
+            class="button1"
             >Add User</a>
         </div>
 
@@ -73,7 +73,6 @@
                                 class="form-control"
                                 />
                             </div>
-                        
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -126,3 +125,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.button1{
+    color: #ffbf00;
+}
+</style>

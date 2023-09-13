@@ -5,7 +5,7 @@
             data-bs-toggle = "modal"
             data-bs-target = "#add-product-modal"
             href="#add-product-modal"
-            class=""
+            class="button1"
             >Add Product</a>
         </div>
 
@@ -137,3 +137,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.button1{
+    color: #ffbf00;
+}
+</style>

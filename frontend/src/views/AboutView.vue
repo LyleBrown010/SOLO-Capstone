@@ -1,10 +1,10 @@
 <template>
 <div>
-    <div class="row">
-        <div class="col-6">
-            <p>Welcome to SOLO, where art comes to life in every stroke, color, and creation. We're not just an art gallery; we're a vibrant tapestry of local talent and artistic expression. As we evolve from our roots as a physical gallery to embrace the digital realm, our passion for showcasing the finest local artists remains unwavering.</p>
+    <div class="">
+        <div class="text-center mx-auto" id="main">
+            <p id="intro">Welcome to SOLO. <br> Where art comes to life in every stroke, color, and creation.</p> 
+            <!-- <p> We're not just an art gallery; we're a vibrant tapestry of local talent and artistic expression. As we evolve from our roots as a physical gallery to embrace the digital realm, our passion for showcasing the finest local artists remains unwavering.</p> -->
         </div>
-        <div class="col-6">Image</div>
     </div>
     <div class="row">
         <div class="col-6"><img id="store" src="https://i.postimg.cc/VvDGfJYF/ruben-ramirez-Ltk-VWp-OPK9w-unsplash.jpg" alt=""></div>
@@ -31,39 +31,17 @@
         <div class="col-4">
         <div class="card card0">
             <h2>Al Pacino</h2>
-            <div class="icons">
-            hhghfhfd
-        <!-- <i class="fa fa-codepen" aria-hidden="true"></i>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-        <i class="fa fa-dribbble" aria-hidden="true"></i>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        <i class="fa fa-facebook" aria-hidden="true"></i> -->
-            </div>
         </div>
         </div>
         <div class="col-4">
             <div class="card card1">
             <h2>Ben Stiller</h2>
-            <div class="icons">
-                <i class="fa fa-codepen" aria-hidden="true"></i>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-            </div>
         </div>
         </div>
 
         <div class="col-4">
             <div class="card card2">
             <h2>Patrick Stewart</h2>
-            <div class="icons">
-                <i class="fa fa-codepen" aria-hidden="true"></i>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <i class="fa fa-dribbble" aria-hidden="true"></i>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-            </div>
         </div>
         </div>
         
@@ -73,6 +51,16 @@
 </template>
 
 <style scoped>
+#main{
+    width: 100%;
+    background-color: #FFDF7D;
+    height: 20vh;
+}
+
+#intro{
+    font-size: 30px;
+}
+
 #store{
     width: 100%;
     height: 70%;
@@ -194,20 +182,6 @@ h2{
 .fa{
     opacity: 0;
     transition: opacity 1s;
-
-}
-
-.icons{
-    position: absolute;
-    fill: #fff;
-    color: #fff;
-    height: 130px;
-    top: 226px;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 
 }
 </style>
