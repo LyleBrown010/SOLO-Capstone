@@ -38,7 +38,7 @@ class Users {
         const data = req.body; 
 
         // password encryption
-        data.userPassword = await hash(data.userPassword, 20);
+        data.userPassword = await hash(data.userPassword, 10);
         
         // payload 
         const user = {
@@ -78,8 +78,8 @@ class Users {
         FROM Users
         WHERE email = '${email}';`;
 
-        db.query(query, [email], async(err, result) => {
-            if(err) throw err
+        db.query(query, async(err, result) => {
+            if(err) throw err;
             
             if(!result?.length){
                 res.json({
@@ -93,6 +93,7 @@ class Users {
                     (cErr, cResult) => {
                         if(cErr) throw cErr;
 
+                        // if (cResult){
                         // create token
                         const token = createToken({
                             email, 
