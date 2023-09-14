@@ -32,6 +32,7 @@
     <div class="col-4 d-flex justify-content-evenly text-white">
       <router-link id="text" to="/login">Log In</router-link>
       <router-link id="text" to="/register">Register</router-link>
+      <router-link id="text" to="/profile">Profile</router-link>
     </div>
   </div>
 </nav>

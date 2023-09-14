@@ -6,10 +6,10 @@
         <form @submit.prevent="login">
           <div class="container">
           <label for="email"><b>Email Address</b></label>
-        <input type="text" placeholder="Enter Username" v-model="payload.email" name="email" required>
+        <input type="email" placeholder="Enter Username" v-model="payload.email" id="email" required>
           
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" v-model="payload.userPassword" name="passsword" required>
+        <input type="password" placeholder="Enter Password" v-model="payload.userPassword" id="passsword" required>
           
         <button type="submit">Login</button> 
         </div>
@@ -43,7 +43,7 @@
   methods: {
     login() {
       this.$store.dispatch("login", this.payload);
-      this.$router.push("/profile");
+    //   this.$router.push("/profile");
     },
   },
 

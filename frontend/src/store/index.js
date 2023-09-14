@@ -133,7 +133,7 @@ export default createStore({
             icon: "success", 
             timer: 4000,
           });
-          router.push({name: "profile"});
+          // router.push({name: "profile"});
         }
         else{
           context.commit("setMessage", err);
