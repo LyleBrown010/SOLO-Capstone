@@ -9,7 +9,7 @@
         <input type="email" placeholder="Enter Username" v-model="payload.email" id="email" required>
           
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" v-model="payload.userPassword" id="passsword" required>
+        <input type="password" placeholder="Enter Password" v-model="payload.userPassword" id="password" required>
           
         <button type="submit">Login</button> 
         </div>
@@ -42,7 +42,7 @@
   },
   methods: {
     login() {
-      this.$store.dispatch("login", this.payload);
+      this.$store.dispatch('login', this.payload);
     //   this.$router.push("/profile");
     },
   },
@@ -50,8 +50,8 @@
   mounted(){
     console.log(cookies.get('setToken'))
   },
-  beforeCreate() {
-    this.$store.dispatch("fetchUsers");
-  }
+  // beforeCreate() {
+  //   this.$store.dispatch("fetchUsers");
+  // }
   }
 </script>

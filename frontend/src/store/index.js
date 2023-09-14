@@ -118,18 +118,18 @@ export default createStore({
     async login(context, payload){
       try{
         const res = await axios.post(`${url}login`, payload);
-        const {results, token, message, error} = await res.data;
+        const {result, token, message, err} = await res.data;
 
-        if(results){
-          context.commit("setUser", results);
+        if(result){
+          context.commit("setUser", result);
           context.commit("setToken", token);
           localStorage.setItem("setToken", token);
-          localStorage.setItem("user", JSON.stringify(results));
+          localStorage.setItem("user", JSON.stringify(result));
 
-          cookies.set("AuthorizedUser", {token, message, results});
+          cookies.set("AuthorizedUser", {token, message, result});
           sweet({
             title: message,
-            text: `Welcome back ${results?.firstName} ${results?.lastName}`, 
+            text: `Welcome back ${result?.firstName} ${result?.lastName}`, 
             icon: "success", 
             timer: 4000,
           });
