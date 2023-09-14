@@ -3,7 +3,7 @@
       <h3 class="h3">ACCOUNT LOGIN</h3>
       <div style="display: flex; justify-content:center">
         <div class="row">
-        <form @submit.prevent="login">
+        <form @submit.prevent="loginUser">
           <div class="container">
           <label for="email"><b>Email Address</b></label>
         <input type="email" placeholder="Enter Username" v-model="payload.email" id="email" required>
@@ -37,13 +37,13 @@
     },
 
     message(){
-        return this.$store.state.message
+        return this.$store.state.message;
     },
   },
   methods: {
-    login() {
+    loginUser() {
       this.$store.dispatch('login', this.payload);
-    //   this.$router.push("/profile");
+      // this.$router.push("/profile");
     },
   },
 

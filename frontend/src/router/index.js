@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import {useCookies} from "vue3-cookies";
+const {cookies} = useCookies();
 const routes = [
   {
     path: '/',
@@ -47,7 +48,8 @@ const routes = [
     beforeEnter() {
       localStorage.removeItem('setToken')
       localStorage.removeItem('user')
-      window.location.reload()
+      cookies.remove("AuthenticatedUser")
+      // window.location.reload()
       router.push({name: 'login'})
     }
   },

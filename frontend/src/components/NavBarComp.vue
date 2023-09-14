@@ -23,6 +23,9 @@
           <li class="nav-item">
             <router-link id="text" to="/contact">Contact</router-link>
           </li>
+          <li class="nav-item">
+            <router-link id="text" to="/checkout">Checkout</router-link>
+          </li>
       </ul>
     </div>
     </div>

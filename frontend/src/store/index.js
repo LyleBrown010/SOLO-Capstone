@@ -30,8 +30,8 @@ export default createStore({
       state.userAuth = true, 
       localStorage.setItem("user", JSON.stringify(user)); 
     },
-    setUserLoggedIn(state, setUserLoggedIn){
-      state.setUserLoggedIn = setUserLoggedIn; 
+    setUserLoggedIn(state, UserLoggedIn){
+      state.UserLoggedIn = UserLoggedIn; 
     },
     setProducts(state, products){
       state.products = products;
@@ -116,17 +116,20 @@ export default createStore({
     }, 
       // token = AuthorisedUser
     async login(context, payload){
+      console.log("reached212")
       try{
         const res = await axios.post(`${url}login`, payload);
         const {result, token, message, err} = await res.data;
+        console.log("reached")
+
 
         if(result){
           context.commit("setUser", result);
           context.commit("setToken", token);
           localStorage.setItem("setToken", token);
           localStorage.setItem("user", JSON.stringify(result));
-
           cookies.set("AuthorizedUser", {token, message, result});
+          console.log("payload")
           sweet({
             title: message,
             text: `Welcome back ${result?.firstName} ${result?.lastName}`, 

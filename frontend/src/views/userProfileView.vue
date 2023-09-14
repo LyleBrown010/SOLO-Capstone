@@ -8,7 +8,7 @@
             <p>{{$store.state.user?.userRole}}</p>
         </div>
         <div>
-             <button type="submit" class="btn logout-btn"><router-link to="/logout" class="logout-text">Log Out</router-link></button>
+          <button type="submit" class="btn logout-btn"><router-link to="/logout" class="logout-text">Log Out</router-link></button>
           <button type="submit" class="btn del-btn" @click="deleteUser(user.userID)">Delete Account</button>
         </div>
     </div>
