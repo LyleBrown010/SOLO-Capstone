@@ -1,5 +1,8 @@
 <template>
-    <div>
+<div>
+
+</div>
+    <!-- <div>
       <h3 class="h3">ACCOUNT LOGIN</h3>
       <div style="display: flex; justify-content:center">
         <div class="row">
@@ -16,42 +19,42 @@
           </form>
         </div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
-    import {useCookies} from "vue3-cookies";
-    const {cookies} = useCookies();
-  export default {
-    data() {
-    return {
-      payload: {
-        email: "",
-        userPassword: "",
-      },
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
+//     import {useCookies} from "vue3-cookies";
+//     const {cookies} = useCookies();
+//   export default {
+//     data() {
+//     return {
+//       payload: {
+//         email: "",
+//         userPassword: "",
+//       },
+//     };
+//   },
+//   computed: {
+//     user() {
+//       return this.$store.state.user;
+//     },
 
-    message(){
-        return this.$store.state.message;
-    },
-  },
-  methods: {
-    loginUser() {
-      this.$store.dispatch('login', this.payload);
-      // this.$router.push("/profile");
-    },
-  },
+//     message(){
+//         return this.$store.state.message;
+//     },
+//   },
+//   methods: {
+//     loginUser() {
+//       this.$store.dispatch('login', this.payload);
+//       // this.$router.push("/profile");
+//     },
+//   },
 
-  mounted(){
-    console.log(cookies.get('setToken'))
-  },
-  // beforeCreate() {
-  //   this.$store.dispatch("fetchUsers");
-  // }
-  }
+//   mounted(){
+//     console.log(cookies.get('setToken'))
+//   },
+//   // beforeCreate() {
+//   //   this.$store.dispatch("fetchUsers");
+//   // }
+//   }
 </script>
