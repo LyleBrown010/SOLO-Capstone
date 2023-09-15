@@ -34,65 +34,77 @@
           </div>
           <div class="modal-body card">
             <div class="mb-3 text-font">
-              <label for="">UserID</label> <br>
+              <label for="">UserID</label> <br />
               <input
                 type="text"
                 placeholder="ID"
                 v-model="editingUser.userID"
-                required oninvalid="this.setCustomValidity('Please insert the userID')"
-            oninput="this.setCustomValidity('')"
+                required
+                oninvalid="this.setCustomValidity('Please insert the userID')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
             <div class="mb-3 text-font">
-              <label for="">First Name</label> <br>
-            <input
-              type="text"
-              placeholder="first name"
-              v-model="editingUser.firstName"
-            />
+              <label for="">First Name</label> <br />
+              <input
+                type="text"
+                placeholder="first name"
+                v-model="editingUser.firstName"
+                required
+                oninvalid="this.setCustomValidity('Please insert User First Name')"
+                oninput="this.setCustomValidity('')"
+              />
             </div>
             <div class="mb-3 text-font">
-              <label for="">Last Name</label> <br>
-            <input
-              type="text"
-              placeholder="last name"
-              v-model="editingUser.lastName"
-            />
+              <label for="">Last Name</label> <br />
+              <input
+                type="text"
+                placeholder="last name"
+                v-model="editingUser.lastName"
+                required
+                oninvalid="this.setCustomValidity('Please insert User Last Name')"
+                oninput="this.setCustomValidity('')"
+              />
             </div>
             <div class="mb-3 text-font">
-              <label for="">Role</label> <br>
-            <input
-              type="text"
-              placeholder="role"
-              v-model="editingUser.userRole"
-            />
+              <label for="">Role</label> <br />
+              <input
+                type="text"
+                placeholder="role"
+                v-model="editingUser.userRole"
+                required
+                oninvalid="this.setCustomValidity('Please insert User Role')"
+                oninput="this.setCustomValidity('')"
+              />
             </div>
             <div class="mb-3 text-font">
-              <label for="">Email Address</label> <br>
-            <input
-              type="text"
-              placeholder="email address"
-              v-model="editingUser.email"
-            />
+              <label for="">Email Address</label> <br />
+              <input
+                type="text"
+                placeholder="email address"
+                v-model="editingUser.email"
+                required
+                oninvalid="this.setCustomValidity('Please insert User Email')"
+                oninput="this.setCustomValidity('')"
+              />
             </div>
             <div class="mb-3 text-font">
-              <label for="">Profile Image</label> <br>
-            <input
-              type="text"
-              placeholder="profile image"
-              v-model="editingUser.userProfile"
-            />
+              <label for="">Profile Image</label> <br />
+              <input
+                type="text"
+                placeholder="profile image"
+                v-model="editingUser.userProfile"
+                required
+                oninvalid="this.setCustomValidity('Please insert User Image')"
+                oninput="this.setCustomValidity('')"
+              />
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">
               Close
             </button>
-            <button
-              type="button"
-              class="btn"
-              @click="updateUser(user.userID)"
-            >
+            <button type="button" class="btn" @click="updateUser(user.userID)">
               Update!
             </button>
           </div>
@@ -152,18 +164,19 @@ export default {
     //     });
     // },
 
-    updateUser(id){
-      this.$store.dispatch("updateUser", {
-        userID: id, 
-        data: {...this.editingUser}
-      })
-      .then(() => {
-        this.$router.push({name: "admin"});
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    }
+    updateUser(id) {
+      this.$store
+        .dispatch("updateUser", {
+          userID: id,
+          data: { ...this.editingUser },
+        })
+        .then(() => {
+          this.$router.push({ name: "admin" });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

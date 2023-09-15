@@ -39,6 +39,8 @@
                                 id="productName"
                                 name="productName"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert Product Name')"
+                                oninput="this.setCustomValidity('')"
                                 />
                                 <label for="productPrice" class="form-label">Price</label>
                                 <input 
@@ -47,6 +49,8 @@
                                 id="productPrice"
                                 name="productPrice"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert Product Price')"
+                                oninput="this.setCustomValidity('')"
                                 />
                                 <label for="category" class="form-label">Category</label>
                                 <input 
@@ -55,6 +59,8 @@
                                 id="category"
                                 name="category"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert Category')"
+                                oninput="this.setCustomValidity('')"
                                 />
                                 <label for="productDescription" class="form-label">Description</label>
                                 <input 
@@ -63,6 +69,8 @@
                                 id="productDescription"
                                 name="productDescription"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert product Description')"
+                                oninput="this.setCustomValidity('')"
                                 />
                                 <label for="artistName" class="form-label">Artist Name</label>
                                 <input 
@@ -71,6 +79,8 @@
                                 id="artistName"
                                 name="artistName"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert Artist Name')"
+                                oninput="this.setCustomValidity('')"
                                 />
                                 <label for="productUrl" class="form-label">Image</label>
                                 <input 
@@ -79,6 +89,8 @@
                                 id="productUrl"
                                 name="productUrl"
                                 class="form-control"
+                                required oninvalid="this.setCustomValidity('Please insert Image')"
+                                oninput="this.setCustomValidity('')"
                                 />
                             </div>
                         

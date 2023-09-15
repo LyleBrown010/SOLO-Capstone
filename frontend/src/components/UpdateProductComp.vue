@@ -40,36 +40,49 @@
               placeholder="name"
               type="text"
               v-model="editingProduct.productName"
+              required oninvalid="this.setCustomValidity('Please insert Product Name')"
+            oninput="this.setCustomValidity('')"
             /> <br>
             <label for="productPrice" class="form-label">Price: </label>
             <input class=".input-bg"
               placeholder="price"
               type="number"
               v-model="editingProduct.productPrice"
+              required oninvalid="this.setCustomValidity('Please insert Product Price')"
+            oninput="this.setCustomValidity('')"
             /> <br>
             <label for="description" class="form-label">Description: </label>
             <input class=".input-bg"
               placeholder="description"
               type="text"
               v-model="editingProduct.productDescription"
+              required oninvalid="this.setCustomValidity('Please insert Product Description')"
+            oninput="this.setCustomValidity('')"
+
             /> <br>
             <label for="artistName" class="form-label">Artist Name: </label>
             <input class=".input-bg"
               placeholder="artistName"
               type="text"
               v-model="editingProduct.artistName"
+              required oninvalid="this.setCustomValidity('Please insert Artist Name')"
+            oninput="this.setCustomValidity('')"
             /> <br>
             <label for="category" class="form-label">Category: </label>
             <input class=".input-bg"
               placeholder="category"
               type="text"
               v-model="editingProduct.category"
+              required oninvalid="this.setCustomValidity('Please insert Product Category')"
+            oninput="this.setCustomValidity('')"
             /> <br>
             <label for="productUrl" class="form-label">Product Image: </label>
             <input class=".input-bg"
               placeholder="image"
               type="text"
               v-model="editingProduct.productUrl"
+              required oninvalid="this.setCustomValidity('Please insert Product Image')"
+            oninput="this.setCustomValidity('')"
             />
           </div>
           <div class="modal-footer">
