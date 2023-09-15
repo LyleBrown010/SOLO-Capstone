@@ -3,7 +3,8 @@ const db = require('../config');
 class Cart{
     fetchCart(req, res){
         const query = `
-        SELECT productName, productPrice, productUrl FROM Users 
+        SELECT Cart.CartID Products.productName, Products.productPrice, Products.productUrl 
+        FROM Users 
         INNER JOIN Cart ON Users.userID = Cart.userID
         INNER JOIN Products ON Cart.productID = Products.productID
         WHERE Cart.userID = ${req.params.id};`;

@@ -74,7 +74,7 @@ class Users {
 
         // query
         const query = `
-        SELECT firstName, lastName, email, userPassword, userProfile
+        SELECT email, userPassword
         FROM Users
         WHERE email = '${email}';`;
 

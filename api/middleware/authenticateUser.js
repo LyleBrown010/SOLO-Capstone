@@ -16,43 +16,14 @@ function createToken(user){
     );
 }
 
-function verifyAToken(req, res, next){
+function verifyAToken(token){
     try{
-        const token = 
-        req.cookies["AuthorizedUser"] !==null
-        ? req.cookies["AuthorizedUser"]
-        : "Please register";
-
-        const isValid = null; 
-
-        if(!token){
-            isValid = verify(token, process.env.SECRET_KEY);
-
-            if(isValid){
-                req.authenticated = true;
-                next();
-            }
-            else{
-                res.json({
-                    status: res.statusCode,
-                    message: "Please register",
-                })
-            }
-
-        }
-        else{
-            res.json({
-                status: res.statusCode,
-                message: "Please register",
-            })
-        }
+        const decoded = verify(token, process.env.SECRET_KEY);
+        return decoded;
     }
-    catch (err) {
-        res.json({
-          status: res.statusCode,
-          message: err.message,
-        });
-}
+    catch(err){
+        return null;
+    }
 }
 
 module.exports = {createToken, verifyAToken};
