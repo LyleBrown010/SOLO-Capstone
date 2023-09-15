@@ -1,8 +1,8 @@
 <template>
 <div>
-  <h1 class="header">Admin</h1>
+  <h1 class="header text-center">Admin</h1><br>
   <div>
-    <h1 class="users">Users</h1>
+    <h3 class="users text-center">Users</h3>
     <addUser />
     <div class="table-responsive">
           <table class="text-center">
@@ -35,7 +35,8 @@
           <td>
             <updateUser :user="user" /><button
               class="btn"
-              @click="deleteUser(user.userID)"
+              @click="deleteUser(user.userID) "
+              id="btn"
             >
               Delete
             </button>
@@ -50,7 +51,7 @@
 
     <br><br>
     <div>
-      <h1 class="products">Products</h1>
+      <h3 class="products text-center">Products</h3>
       <addProduct />
       <div class="table-responsive">
         <table >
@@ -84,7 +85,7 @@
             </td>
             <td>
               <updateProduct :product="product" />
-              <button @click="deleteProduct(product.prodID)" class="btn">
+              <button @click="deleteProduct(product.prodID)" class="btn" id="btn">
                 Delete
               </button>
             </td>
@@ -157,9 +158,13 @@ export default {
 
 <style scoped>
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+}
+h1, h3{
+  font-family: 'Rubik Mono One', sans-serif;
 }
 table{
   padding: 5px;
@@ -182,5 +187,24 @@ th, td{
 .image{
   width: 50px;
   height: 50px;
+}
+
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

@@ -55,10 +55,10 @@
 
 
         <div class="green-bg text-center">
-          <button type="submit" class="btn m-2 add-btn text-font">
+          <button type="submit" class="btn m-2 add-btn text-font" id="btn">
             Submit!
           </button>
-          <button type="reset" class="btn m-2 clr-btn text-font">
+          <button type="reset" class="btn m-2 clr-btn text-font" id="btn">
             Clear Fields
           </button>
         </div>
@@ -67,9 +67,9 @@
 
     <div class="col-7">
       <div class="col-12" id="right-section">
-        <div id="visit-us">
-          <h4>Visit us:</h4>
-          <p>Address: 234 Forest Drive, Salt River, Cape Town</p>
+        <div id="visit-us" class="p-3">
+          <h4 class="text-center">Visit us:</h4>
+          <p class="text-center">Address: 234 Forest Drive, Salt River, Cape Town</p>
         </div>
         <div>
           <iframe
@@ -97,14 +97,15 @@
 </template>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
 }
 .contact-form {
   background-color: #ffdf7d;
-  height: 80vh;
+  height: 72vh;
   padding: 5px;
 }
 
@@ -116,7 +117,7 @@
 
 #FAQ {
   background-color: black;
-  height: 70%;
+  height: 46vh;
   color: #ffbf00;
   padding: 10px;
 }
@@ -127,5 +128,24 @@
 
 #visit-us {
   padding: 10px;
+}
+
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

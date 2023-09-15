@@ -2,13 +2,13 @@
   <div class="background">
     <div class="row" id="top">
       <div class="col-3 text-center" id="custom">
-        <button @click="sortPrice">SORT BY PRICE</button>
-        <button @click="sortName">SORT BY NAME</button>
+        <button @click="sortPrice" id="btn">SORT BY PRICE</button>
+        <button @click="sortName" id="btn">SORT BY NAME</button>
       </div>
       <div class="col-6 text-center" id="custom">
         <input type="text" v-model="search" placeholder="search" />
       </div>
-      <div class="col-3 text-center" id="custom">
+      <div class="col-3 text-center text-black" id="custom">
         <select v-model="category">
           <option value="All">All</option>
           <option value="Modern">Modern</option>
@@ -33,7 +33,7 @@
           <p class="">R {{product.productPrice}}.00</p>
         </div>
         <div>
-          <button @click="viewDetails(product.prodID)" class="btn">View Details</button>
+          <button @click="viewDetails(product.prodID)" class="btn" id="btn">View Details</button>
         </div>
       </div>
 
@@ -99,8 +99,11 @@ export default {
 
 <style scoped>
 *{
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+     color: #FFF9F0;
 }
 
 .background{
@@ -115,16 +118,49 @@ export default {
 .product{
   display: grid;
   grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
+  row-gap: 2px;
 }
+@media only screen and (max-width: 1365px){
+  .product{
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 948px){
+  .product{
+    grid-template-columns: auto;
+    width: 100%;
+  }
+}
+
+
 
 #image{
   height: 70vh;
 }
 
 .card{
-  width: 100%;
+  width: 90%;
   height: 100%;
+  background-color: black;
 }
 
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
 
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 </style>

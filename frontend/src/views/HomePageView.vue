@@ -2,7 +2,7 @@
 <div class="body">
     <div class="main">
         <img id="back" src="https://i.postimg.cc/63tqFbWd/main-background.jpg" alt="">
-        <div class="center">WELCOME TO SOLO.</div>
+        <div class="center" id="header">WELCOME TO SOLO.</div>
     </div>
 
     <div class="moving-strip-container">
@@ -40,11 +40,11 @@
         </div>
     </div>
     <div class="row" id="upcoming">
-        <div class="col-5 p-4">
+        <div class="col-5 p-4" id="event1">
             <h1>SOLO. <br>Launch Event</h1>
             <h4>LOCATION: SOLO HQ</h4>
             <h5>ENTRANCE FEE: Utter Secret Password</h5>
-            <label for="showTextCheckbox">PASSWORD</label>
+            <label for="showTextCheckbox" id="btn">PASSWORD</label>
             <input type="checkbox" id="showTextCheckbox">
             <p id="displayText">I-LOVE-SOLO</p>
         </div>
@@ -60,6 +60,16 @@
   position: relative;
   text-align: center;
 }
+#header{
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 300%;
+}
+
+@media only screen and (max-width: 840px){
+#header{
+  font-size: 100%;
+}
+}
 .center{
   position: absolute;
   top: 50%;
@@ -71,11 +81,18 @@
 #upcoming{
     background-color: #FFBF00;
     height: 50vh;
+    font-family: 'Lalezar', cursive;
 }
 
 #event{
   width:100%;
   height: 100%;
+}
+@media only screen and (max-width: 1000px){
+  #upcoming{
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 #back{
     width: 100%;
@@ -244,6 +261,26 @@ label {
 #showTextCheckbox:checked + #displayText {
     display: block;
 }
+
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
 
 
 </style>

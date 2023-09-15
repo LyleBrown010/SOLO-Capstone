@@ -6,6 +6,7 @@
         data-bs-target="#add-user-modal"
         href="#add-user-modal"
         class="button1"
+        id="btn"
         >Add User</a
       >
     </div>
@@ -16,6 +17,7 @@
           <div class="modal-header">
             <h1>Register:</h1>
             <button
+              id="btn"
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
@@ -99,13 +101,14 @@
           <div class="modal-footer">
             <div class="p-3 text-center">
               <button
+                id="btn"
                 type="submit"
                 class="btn m-2 add-btn text-font"
                 @click="addUser()"
               >
                 Register!
               </button>
-              <button type="reset" class="btn m-2 clr-btn text-font">
+              <button type="reset" class="btn m-2 clr-btn text-font" id="btn">
                 Clear Fields
               </button>
             </div>
@@ -148,7 +151,37 @@ export default {
 </script>
 
 <style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+     background-color: black;
+     color: #FFF9F0;
+}
+input{
+  border: 2px solid #FFD700;
+  background-color: #FFF9F0;
+}
 .button1 {
   color: #ffbf00;
+}
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

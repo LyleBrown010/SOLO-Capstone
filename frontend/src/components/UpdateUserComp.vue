@@ -7,6 +7,7 @@
       @click="openEditModal(user.userID)"
       data-bs-toggle="modal"
       :data-bs-target="'#texampleModal' + user.userID"
+      id="btn"
     >
       Edit
     </button>
@@ -26,6 +27,7 @@
               Update User:
             </h1>
             <button
+              id="btn"
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
@@ -101,10 +103,10 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">
+            <button type="button" class="btn" data-bs-dismiss="modal" id="btn">
               Close
             </button>
-            <button type="button" class="btn" @click="updateUser(user.userID)">
+            <button type="button" class="btn" @click="updateUser(user.userID)" id="btn">
               Update!
             </button>
           </div>
@@ -180,3 +182,36 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+     background-color: black;
+     color: #FFF9F0;
+}
+input{
+  border: 2px solid #FFD700;
+  background-color: #FFF9F0;
+}
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+</style>

@@ -18,15 +18,15 @@
                             <td>{{item.product.productName}}</td>
                             <td>{{item.product.productPrice}}</td>
                             <td>{{item.product.productUrl}}</td>
-                            <td><button @click="deleteProduct(prodID)"> Delete</button></td>
+                            <td><button @click="deleteProduct(prodID)" id="btn"> Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
-                <button @click="clearCart()">Clear Cart</button>
+                <button @click="clearCart()" id="btn">Clear Cart</button>
                 <div>
                     <span>Total: R{{Total}}</span>
                 </div>
-                <button @click="checkout()" type="submit">Checkout</button>
+                <button @click="checkout()" type="submit" id="btn">Checkout</button>
             </div>
         </div>
     </div>
@@ -83,3 +83,24 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+</style>

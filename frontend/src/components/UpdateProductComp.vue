@@ -3,6 +3,7 @@
     <!-- Button trigger modal -->
     <button
       type="button"
+      id="btn"
       class="btn"
       @click="openEditModal(product.prodID)"
       data-bs-toggle="modal"
@@ -96,6 +97,7 @@
             <button
               type="button"
               class="btn"
+              id="btn"
               @click="updateProduct(product.prodID)"
             >
               UPDATE!
@@ -160,3 +162,35 @@ export default {
   },
 };
 </script>
+<style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+     background-color: black;
+     color: #FFF9F0;
+}
+input{
+  border: 2px solid #FFD700;
+  background-color: #FFF9F0;
+}
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+</style>

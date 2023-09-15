@@ -70,6 +70,7 @@
   color: #FFBF00;
   text-decoration: none;
   font-family: 'Rubik Mono One', sans-serif;
+  font-size: 70%;
 
 }
 
@@ -79,8 +80,11 @@
 
 .nav-item{
   padding: 5px;
+  font-size: 100%;
 }
-
+@media only screen and (max-width: 600px){
+  
+}
 
 
 

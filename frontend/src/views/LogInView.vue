@@ -23,9 +23,9 @@
               required
             /> <br><br>
 
-            <button type="submit">Login</button>
+            <button type="submit" id="btn">Login</button>
             <p>Don't have an account?</p>
-            <button class="link">
+            <button class="link" id="btn">
               <router-link
                 to="/register"
                 class=""
@@ -84,6 +84,19 @@ export default {
 };
 </script>
 <style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     font-family: 'Lalezar', cursive;
+     background-color: black;
+     color: #FFF9F0;
+}
+input{
+  border: 2px solid #FFD700;
+  background-color: #FFF9F0;
+}
+
 form{
   border: 3px solid black;
   padding: 10%;
@@ -93,5 +106,24 @@ form{
 
 .page{
   height: 75vh;
+}
+
+#btn {
+  background: black;
+  color: #FFF9F0;
+  border: 3px solid #FFF9F0;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+#btn:hover {
+  background: black;
+  color: #FFD700;
+  box-shadow: 0 0 30px 5px #FFF9F0;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>
