@@ -191,6 +191,40 @@ export default createStore({
       },
 
 
+    // async login(context, payload){
+    //   console.log("reached212")
+    //   try{
+    //     const res = await axios.post(`${url}login`, payload);
+    //     const {result, token, message, err} = await res.data;
+    //     console.log("reached")
+
+
+    //     if(result){
+    //       context.commit("setUser", result);
+    //       context.commit("setToken", token);
+    //       localStorage.setItem("setToken", token);
+    //       localStorage.setItem("user", JSON.stringify(result));
+    //       cookies.set("AuthorizedUser", {token, message, result});
+    //       console.log("payload")
+    //       sweet({
+    //         title: message,
+    //         text: `Welcome back ${result?.firstName} ${result?.lastName}`, 
+    //         icon: "success", 
+    //         timer: 4000,
+    //       });
+    //       // router.push({name: "profile"});
+    //     }
+    //     else{
+    //       context.commit("setMessage", err);
+    //     }
+    //   }
+    //   catch(e){
+    //     console.error(e)
+    //   }
+
+    // },
+
+
 
       // try{
       //   const {message, token, payload} = (
