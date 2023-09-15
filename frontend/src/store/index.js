@@ -10,28 +10,34 @@ const url = "https://solo-4p4z.onrender.com/";
 export default createStore({
   state: {
     users: null, 
-    user:null || JSON.parse(localStorage.getItem("user")), 
+    user:null,
     userAuth: null,
     products: null, 
     product: null, 
     selectedProduct: null,
-    token: null || localStorage.getItem("token"),
-    cart: null,
+    token: null,
+    cart: [],
     message: null, 
-    asc: true
+    asc: true, 
+    userData: null, 
+    userRole: null,
+    registrationStatus: null,
+    logInStatus: null,
+    error: null,
   },
 
+  getters:{
+    cartTotal(state){
+      const total = state.cart.reduce((total, product) => total + parseFloat(product.productPrice), 0);
+      return total.toFixed(2);
+    },
+  },
   mutations: {
     setUsers(state, users){
       state.users = users;
     }, 
     setUser(state, user){
-      state.user = user, 
-      state.userAuth = true, 
-      localStorage.setItem("user", JSON.stringify(user)); 
-    },
-    setUserLoggedIn(state, UserLoggedIn){
-      state.UserLoggedIn = UserLoggedIn; 
+      state.user = user;
     },
     setProducts(state, products){
       state.products = products;
@@ -39,19 +45,56 @@ export default createStore({
     setProduct(state, product){
       state.product = product;
     },
+
     setSelectedProduct(state, product){
       state.selectedProduct = product
-    }, 
+    },
     setToken(state, token){
       state.token = token
     },
-    setCart(state, cart){
-      state.cart = cart
+    setCart(state, value){
+      state.cart = value
     },
     setMessage(state, message){
       state,message = message;
     },
+    setRegistrationStatus(state, status){
+      state.registrationStatus = status;
+    }, 
+    setLogInStatus(state, status){
+      state.logInStatus = status
+    },
+    setUserData(state, userData) {
+      state.userData = userData;
+      if (userData && userData.userRole) {
+        state.userRole = userData.userRole;
+        localStorage.setItem("userData", JSON.stringify(userData));
+        console.log(userData, userData.userRole);
+      } else {
+        state.userData = null;
+        state.userRole = null;
+        localStorage.removeItem("userData");
+      }
+    },
 
+    setError(state, error){
+      state.error = error
+    },
+
+    addToCart(state, product){
+      state.cart.push(product)
+    },
+
+    removeFromCart(state, cartID){
+      state.cart = state.cart.filter((cart) => cart.cartID !== cartID) 
+    },
+
+    clearCart(state) {
+      state.cartItems = [];
+    },
+    setUserLoggedIn: (state, userLog) => {
+      state.userLog = userLog;
+    },
     sortProductsByPrice: (state) => {
       state.products.sort((a, b) => { 
         return a.productPrice - b.productPrice; 
@@ -70,7 +113,7 @@ export default createStore({
         state.products.reverse(); 
       }
       state.asc = !state.asc
-    }
+    },
   },
 
   actions: {
@@ -115,38 +158,37 @@ export default createStore({
       }
     }, 
       // token = AuthorisedUser
-    async login(context, payload){
-      console.log("reached212")
-      try{
-        const res = await axios.post(`${url}login`, payload);
-        const {result, token, message, err} = await res.data;
-        console.log("reached")
-
-
-        if(result){
-          context.commit("setUser", result);
-          context.commit("setToken", token);
-          localStorage.setItem("setToken", token);
-          localStorage.setItem("user", JSON.stringify(result));
-          cookies.set("AuthorizedUser", {token, message, result});
-          console.log("payload")
-          sweet({
-            title: message,
-            text: `Welcome back ${result?.firstName} ${result?.lastName}`, 
-            icon: "success", 
-            timer: 4000,
-          });
-          // router.push({name: "profile"});
+      async login(context, payload) {
+        console.log("start")
+        try {
+          console.log("reached")
+          const { message, token, result } = (
+            await axios.post(`${url}login`, payload)
+          ).data;
+          if (result) {
+            console.log(result)
+            context.commit("setUser", { result, message });
+            cookies.set("AuthorizedUser", { message, token, result });
+            userAuth.applyToken(token);
+            sweetAlert({
+              title: message,
+              text: `Welcome back ${result?.firstName} ${result?.lastName}`,
+              icon: "success",
+              timer: 1000,
+            });
+            this.$router.push('/profile');
+          } else {
+            sweetAlert({
+              title: "Error",
+              text: message,
+              icon: "error",
+              timer: 1000,
+            });
+          }
+        } catch (e) {
+          context.commit("setMessage", "An error has occured");
         }
-        else{
-          context.commit("setMessage", err);
-        }
-      }
-      catch(e){
-        console.error(e)
-      }
-
-    },
+      },
 
 
 
@@ -181,6 +223,7 @@ export default createStore({
 
     async logOut(context){
       context.commit("setUser")
+      location.reload()
       cookies.remove("AuthenticatedUser");
     },
 

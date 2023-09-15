@@ -4,6 +4,10 @@
 
 <style scoped>
 
+*{
+  height: 75vh;
+}
+
 .loader {
   position: relative;
   width: 120px;

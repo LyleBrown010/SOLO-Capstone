@@ -74,8 +74,11 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28139.21864282934!2d18.44184702067224!3d-33.93531350262455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d09797f9fc5%3A0x336f33ca28255691!2sSolo%20Factory%20Shop!5e0!3m2!1sen!2sza!4v1694261019551!5m2!1sen!2sza" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
-        <div class="col-12" id="FAQ">
+        <div class="col-12 text-center" id="FAQ">
           <h4>Frequently Asked Questions</h4>
+          <br>
+          <h6>Where can I collect my purchased Artwork?</h6>
+          <p class="answer">SOLO mainly caters for in person pick up. Artwork can be collected at our HQ. Shipping arrangements can be made. Please contact us! </p>
         </div>
     </div>
 </div>
@@ -101,9 +104,13 @@
 
 #FAQ{
   background-color: black;
-  height: 65%;
+  height: 70%;
   color: #FFBF00;
   padding: 10px;
+}
+
+.answer{
+  color: #FFF9F0;
 }
 
 #visit-us{

@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-6"><img id="store" src="https://i.postimg.cc/VvDGfJYF/ruben-ramirez-Ltk-VWp-OPK9w-unsplash.jpg" alt=""></div>
-        <div class="col-6">
+        <div class="col-6 p-3">
             <h4>Where it all began</h4>
             <p>SOLO was born in the heart of Cape Town, where the walls of our physical gallery have borne witness to countless masterpieces, each telling a unique story. We've been a pillar of the local art community, championing emerging and established artists alike. The energy, the conversations, and the connections created within these walls are the essence of SOLO.</p>
         </div>
@@ -26,7 +26,7 @@
             <p>Our dedication to local talent remains at the forefront of our mission. We continue to provide a platform for local artists to shine, to express, and to inspire. From painters and sculptors to photographers and mixed-media creators, SOLO celebrates the diversity of artistic expression in our community.</p>
         </div>
     </div>
-    <h3>ART TEAM</h3>
+    <h4 class="text-center">Latest Members to our Team</h4>
     <div class="container row">
         <div class="col-4">
         <div class="card card0">
@@ -51,6 +51,12 @@
 </template>
 
 <style scoped>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #main{
     width: 100%;
     background-color: #FFDF7D;
@@ -114,12 +120,12 @@
  
 
 .card0{
-    background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') center center no-repeat;
+    background: url('https://i.postimg.cc/VLNc04gQ/markus-stephen-griffiths-Mt-SF6-U6gy2-Q-unsplash.jpg') center center no-repeat;
     background-size: 200px;
 }
 
 .card0:hover{
-    background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') left center no-repeat;
+    background: url('https://i.postimg.cc/VLNc04gQ/markus-stephen-griffiths-Mt-SF6-U6gy2-Q-unsplash.jpg') left center no-repeat;
     background-size: 400px;
 }
 
@@ -132,13 +138,13 @@
 }
 
 .card1{
-    background: url('https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg') center center no-repeat;
+    background: url('https://i.postimg.cc/k4hDV6Cm/christian-buehner-Xi-WX754jx0s-unsplash.jpg') center center no-repeat;
     background-size: 200px;
 
 }
 
 .card1:hover{
-    background: url('https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg') left center no-repeat;
+    background: url('https://i.postimg.cc/k4hDV6Cm/christian-buehner-Xi-WX754jx0s-unsplash.jpg') left center no-repeat;
     background-size: 400px;
 }
 
@@ -152,13 +158,13 @@
 }
 
 .card2{
-    background: url('https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg') center center no-repeat;
+    background: url('https://i.postimg.cc/8cZdJTHv/markus-stephen-griffiths-z-Zm8b-KTXm-SU-unsplash.jpg') center center no-repeat;
     background-size: 200px;
 
 }
 
   .card2:hover{
-      background: url('https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg') left center no-repeat;
+      background: url('https://i.postimg.cc/8cZdJTHv/markus-stephen-griffiths-z-Zm8b-KTXm-SU-unsplash.jpg') left center no-repeat;
       background-size: 400px;
 
   }

@@ -10,6 +10,7 @@
         <p class="fs-4">Category: {{ product.category }}</p>
         <p>{{ product.productDescription }}</p>
         <p class="fs-2">Price: R{{ product.productPrice }}</p>
+        <button type="submit" @click="addToCart">Add To Cart</button>
       </div>
     </div>
     <div v-else>

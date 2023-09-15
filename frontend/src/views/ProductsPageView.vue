@@ -2,10 +2,11 @@
   <div class="background">
     <div class="row" id="top">
       <div class="col-3 text-center" id="custom">
-        <button @click="sortPrice">PRICE</button>
+        <button @click="sortPrice">SORT BY PRICE</button>
+        <button @click="sortName">SORT BY NAME</button>
       </div>
-      <div class="col-3 text-center" id="custom">
-        <button @click="sortName">NAME</button>
+      <div class="col-6 text-center" id="custom">
+        <input type="text" v-model="search" placeholder="search" />
       </div>
       <div class="col-3 text-center" id="custom">
         <select v-model="category">
@@ -15,9 +16,7 @@
           <option value="Classic">Classic</option>
         </select>
       </div>
-      <div class="col-3 text-center" id="custom">
-        <input type="text" v-model="search" placeholder="search" />
-      </div>
+      
     </div>
     <br>
 

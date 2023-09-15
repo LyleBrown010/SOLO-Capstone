@@ -17,7 +17,7 @@
           <li class="nav-item">
             <router-link id="text" to="/products">Products</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" > 
             <router-link id="text" to="/admin">Admin</router-link>
           </li>
           <li class="nav-item">
@@ -41,11 +41,25 @@
 </nav>
 </div>
 
-
-
-
-
 </template>
+
+<script>
+// import {useCookies} from'vue3-cookies'
+// const {cookies} = useCookies()
+// export default {
+//   computed: {
+//     user(){
+//       return this.$store.state.user || cookies.get('AuthorizedUser')
+//     }
+//   },
+//   result(){
+//     return this.user?.results;
+//   },
+//   isAdmin(){
+//     return this.results?.userRole?.toLowerCase() === "admin"
+//   }
+// }
+</script>
 
 <style scoped>
 #logo{
