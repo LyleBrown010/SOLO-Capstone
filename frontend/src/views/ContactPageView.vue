@@ -10,7 +10,7 @@
       >
         <div class="mb-3 green-bg text-font">
           <label for="fullName" class="form-label green-bg"
-            >Full Name(s): *</label
+            >Full Name(s): </label
           >
           <input
             v-model="fullName"
@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-3 green-bg text-font">
-          <label for="email" class="form-label green-bg">Email: *</label>
+          <label for="email" class="form-label green-bg">Email: </label>
           <input
             v-model="email"
             type="text"
@@ -52,7 +52,7 @@
             oninput="this.setCustomValidity('')"
           ></textarea>
         </div>
-        
+
 
         <div class="green-bg text-center">
           <button type="submit" class="btn m-2 add-btn text-font">
