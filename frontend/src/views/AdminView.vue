@@ -4,7 +4,7 @@
   <div>
     <h1 class="users">Users</h1>
     <addUser />
-    <div class="table">
+    <div class="table-responsive">
           <table class="text-center">
       <thead>
         <tr>
@@ -52,7 +52,7 @@
     <div>
       <h1 class="products">Products</h1>
       <addProduct />
-      <div class="table">
+      <div class="table-responsive">
         <table >
         <thead>
           <tr>

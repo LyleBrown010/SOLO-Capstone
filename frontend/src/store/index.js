@@ -188,104 +188,13 @@ export default createStore({
         } catch (e) {
           context.commit("setMessage", "An error has occured");
         }
-      },
-
-
-    // async login(context, payload){
-    //   console.log("reached212")
-    //   try{
-    //     const res = await axios.post(`${url}login`, payload);
-    //     const {result, token, message, err} = await res.data;
-    //     console.log("reached")
-
-
-    //     if(result){
-    //       context.commit("setUser", result);
-    //       context.commit("setToken", token);
-    //       localStorage.setItem("setToken", token);
-    //       localStorage.setItem("user", JSON.stringify(result));
-    //       cookies.set("AuthorizedUser", {token, message, result});
-    //       console.log("payload")
-    //       sweet({
-    //         title: message,
-    //         text: `Welcome back ${result?.firstName} ${result?.lastName}`, 
-    //         icon: "success", 
-    //         timer: 4000,
-    //       });
-    //       // router.push({name: "profile"});
-    //     }
-    //     else{
-    //       context.commit("setMessage", err);
-    //     }
-    //   }
-    //   catch(e){
-    //     console.error(e)
-    //   }
-
-    // },
-
-
-
-      // try{
-      //   const {message, token, payload} = (
-      //     await axios.post(`${url}login`, payload)
-      //   ).data; 
-      //   if(results){
-      //     context.commit("setUser", {results, message});
-      //     cookies.set("AuthorisedUser", { message, token, results});
-      //     authUser.applyToken(token);
-      //     sweet({
-      //       title: message,
-      //       text: `Welcome back ${results?.firstName} ${results?.lastName}`, 
-      //       icon: "success", 
-      //       timer: 4000,
-      //     });
-      //     router.push({name: "profile"});
-      //   }
-      //   else{
-      //     sweet({
-      //       title: "Error",
-      //       text: message, 
-      //       icon: "error",
-      //       timer: 4000
-      //     });
-      //   }
-      // }
-      // catch(e){
-      //   context.commit("setMessage", "An error has occurred while logging in")
-      // }
+      }, 
 
     async logOut(context){
       context.commit("setUser")
       location.reload()
       cookies.remove("AuthenticatedUser");
     },
-
-
-
-    // async login(context, payload){
-    //   try{
-    //     const response = await axios.post(`${url}login`, payload); 
-    //     alert ('LOGGED IN')
-    //     const {results, jwToken, message, err} = await response.data
-    //     if(results){
-    //       context.commit ('setUser', results);
-    //       context.commit('setToken', jwToken);
-    //       localStorage.setItem('loginToken', jwToken); 
-    //       localStorage.setItem('user', JSON.stringify(results));
-    //       context.commit('setMessage', message)
-    //       setTimeout(() => {
-    //         router.push({name: 'products'})
-    //       }), 3000
-    //     }
-    //     else{
-    //       context.commit('setMessage', err);
-    //     }
-    //   }
-    //   catch(error){
-    //     console.error(error); 
-    //   }
-    // },
 
     async updateUser(context, payload){
       console.log(payload)
@@ -420,8 +329,39 @@ export default createStore({
       }
     },
 
-    async addToCart(context, payload){
-      
-    }
+    async addToCart({commit}, {userID, prodID}){
+      try{
+        const response = await axios.post(`${url}users/${userID}/cart`, {
+          userID, prodID,
+        });
+        if(response.status === 200){
+          commit("addToCart", response.data);
+        }
+        
+      }
+      catch(err){
+        console.error(err);
+      }
+    },
+
+    async removeFromCart({commit}, {userID, cartID}){
+      try{
+        await axios.delete(`${url}users/${userID}/cart/${cartID}`);
+        commit("removeFromCart", cartID);
+      }
+      catch(err){
+        console.error(err)
+      }
+    },
+
+    async clearCart({ commit }, { userID }) {
+      try {
+        await axios.delete(`${url}users/${userID}/cart`);
+        commit("clearCart", userID);
+      } 
+      catch (err) {
+        console.error(err);
+      }
+    },
   }
 })
