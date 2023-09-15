@@ -10,15 +10,10 @@
         <div class="col-6"><img id="store" src="https://i.postimg.cc/VvDGfJYF/ruben-ramirez-Ltk-VWp-OPK9w-unsplash.jpg" alt=""></div>
         <div class="col-6 p-3">
             <h4>Where it all began</h4>
-            <p>SOLO was born in the heart of Cape Town, where the walls of our physical gallery have borne witness to countless masterpieces, each telling a unique story. We've been a pillar of the local art community, championing emerging and established artists alike. The energy, the conversations, and the connections created within these walls are the essence of SOLO.</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
+            <p>SOLO was born in the heart of Cape Town, where the walls of our physical gallery have borne witness to countless masterpieces, each telling a unique story. We've been a pillar of the local art community, championing emerging and established artists alike. The energy, the conversations, and the connections created within these walls are the essence of SOLO.</p><br>
             <h4>Our Digital Transformation: The Future of Art</h4>
             <p>In an ever-evolving world, we've adapted to bring art into the digital age. Our new online ecommerce platform opens doors to art lovers around the globe, ensuring that the world can experience the beauty and creativity that emanates from our local artists. We're excited to share our ever-expanding collection with the world, making art more accessible than ever before.</p>
         </div>
-        <div class="col-6">Image</div>
     </div>
     <div class="row">
         <div class="col-12">
@@ -27,21 +22,21 @@
         </div>
     </div>
     <h4 class="text-center">Latest Members to our Team</h4>
-    <div class="container row">
-        <div class="col-4">
+    <div class="container row ">
+        <div class="col-4 ">
         <div class="card card0">
-            <h2>Al Pacino</h2>
+            <h2>Sibs Frank</h2>
         </div>
         </div>
         <div class="col-4">
             <div class="card card1">
-            <h2>Ben Stiller</h2>
+            <h2>Fred</h2>
         </div>
         </div>
 
         <div class="col-4">
             <div class="card card2">
-            <h2>Patrick Stewart</h2>
+            <h2>Luna</h2>
         </div>
         </div>
         
@@ -81,26 +76,13 @@
     min-width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
-    /* display: flex;
-    justify-content: space-between; */
+    justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
 }
 
 
-/* .border{
-    height: 369px;
-  width: 290px;
-  background: transparent;
-  border-radius: 10px;
-  transition: border 1s;
-  position: relative;
-}
- 
 
-  .border:hover{
-    border: 1px solid white;
-} */
     
 
 .card{
@@ -129,10 +111,6 @@
     background-size: 400px;
 }
 
-/* h2{
-    opacity: 1
-} */
-
 .fa{
     opacity: 1
 }
@@ -148,10 +126,6 @@
     background-size: 400px;
 }
 
-/* h2{
-    opacity: 1;
-
-} */
 
 .fa{
     opacity: 1;
@@ -168,11 +142,6 @@
       background-size: 400px;
 
   }
-
-/* h2{
-    opacity: 1;
-
-} */
 
 .fa{
     opacity: 1;

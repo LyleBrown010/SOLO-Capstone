@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex align-items-center justify-content-center star-bg">
-    <div class="card m-5 p-5 w-50 purple-bg">
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="card m-5 p-5 w-50">
         <h1 class="text-center heading-text">Register :</h1>
 
       <form @submit.prevent="registerUser" class="p-3">
@@ -11,7 +11,6 @@
             type="text"
             id="firstName"
             class="form-control input-bg"
-            placeholder="eg: Clayton"
             required
             oninvalid="this.setCustomValidity('Please enter your first name')"
             oninput="this.setCustomValidity('')"
@@ -25,7 +24,6 @@
             type="text"
             id="lastName"
             class="form-control input-bg"
-            placeholder="eg: Sherman"
             required
             oninvalid="this.setCustomValidity('Please enter your last name.')"
             oninput="this.setCustomValidity('')"
@@ -33,13 +31,12 @@
         </div>
 
         <div class="mb-3">
-          <label for="emailAdd" class="form-label"> Email: * </label>
+          <label for="email" class="form-label"> Email: * </label>
           <input
-            v-model="user.emailAdd"
+            v-model="user.email"
             type="text"
-            id="emailAdd"
+            id="email"
             class="form-control input-bg"
-            placeholder="eg: claytonsherman@gmail.com"
             required
             oninvalid="this.setCustomValidity('Please enter a valid email address.')"
             oninput="this.setCustomValidity('')"
@@ -47,9 +44,9 @@
         </div>
 
         <div class="mb-3">
-          <label for="userPass" class="form-label"> Password: * </label>
+          <label for="userPassword" class="form-label"> Password: * </label>
           <input
-            v-model="user.userPass"
+            v-model="user.userPassword"
             type="text"
             id="password"
             class="form-control input-bg"
@@ -60,11 +57,11 @@
         </div>
 
         <div class="mb-3">
-          <label for="userImg" class="form-label"> User Profile: </label>
+          <label for="userProfile" class="form-label"> User Profile: </label>
           <input
-            v-model="user.userImg"
+            v-model="user.userProfile"
             type="text"
-            id="userImg"
+            id="userProfile"
             class="form-control input-bg"
             placeholder="Insert image link."
           />
@@ -93,9 +90,9 @@ export default {
       user: {
         firstName: "",
         lastName: "",
-        emailAdd: "",
-        userPass: "",
-        userImg: "",
+        email: "",
+        userPassword: "",
+        userProfile: "",
       },
     };
   },
@@ -104,8 +101,8 @@ export default {
     registerUser() {
       this.$store.dispatch("registerUser", this.user);
       this.$swal({
-              title: "Welcome to Moonstruck Vinyl's !",
-              text: `You have been successfully registered! Happy Shopping!`,
+              title: "Welcome to SOLO !",
+              text: `You have been successfully registered!`,
               icon: "success",
               timer: 5000
             });
